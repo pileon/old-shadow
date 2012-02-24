@@ -35,12 +35,22 @@
 #                                                                    #
 ######################################################################
 
-srcdir  = .
+topdir  = .
 
-TARGET  = shadow
-SOURCES = shadow.cpp
+TARGETS = shadow
+SOURCES = main.cpp shadow.cpp
 HEADERS = shadow.h
 
 ######################################################################
+
+.PHONY: default
+default: all
+
+.PHONY: all
+all: build_all
+
+######################################################################
+
+include $(topdir)/mk/build.mk
 
 ######################################################################

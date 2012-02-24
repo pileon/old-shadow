@@ -35,37 +35,14 @@
 #                                                                    #
 ######################################################################
 
-OBJECTS  = $(patsubst %.c,%.o,$(filter %.c,$(SOURCES)))
-OBJECTS += $(patsubst %.cpp,%.o,$(filter %.cpp,$(SOURCES)))
-# TODO: Add other source file types as well?
+CC  = gcc
+CXX = g++
+LD  = g++
 
-include $(topdir)/mk/tools.mk
-
-######################################################################
-
-.PHONY: build_all
-build_all: pre_build build_targets post_build
-
-.PHONY: pre_build
-pre_build:
-
-.PHONY: post_build
-post_build:
-
-.PHONY: build_targets
-build_targets: build_static_libs build_dynamic_libs build_exes
-
-.PHONY: build_static_libs
-build_static_libs:
-
-.PHONY: build_dynamic_libs
-build_dynamic_libs:
-
-.PHONY: build_exes
-build_exes: $(filter-out %.a %.so,$(TARGETS))
-
-$(filter-out %.a %.so,$(TARGETS)): $(OBJECTS)
-	$(LD) $(LDFLAGS) $^ -o $@ $(LIBS)
+CFLAGS   =
+CXXFLAGS =
+LDFLAGS  =
+LIBS     =
 
 ######################################################################
 
