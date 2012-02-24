@@ -39,10 +39,14 @@ CC  = gcc
 CXX = g++
 LD  = g++
 
-CFLAGS   =
-CXXFLAGS = $(CXX_WARNING_FLAGS) $(CXX_DEBUG_FLAGS) $(CXX_EXTRA_FLAGS)
-LDFLAGS  =
-LIBS     =
+CPP_FLAGS = $(CPP_DEFINES) $(CPP_EXTRA_FLAGS)
+CFLAGS    =
+CXXFLAGS  = $(CXX_WARNING_FLAGS) $(CXX_DEBUG_FLAGS) $(CXX_EXTRA_FLAGS)
+LDFLAGS   =
+LIBS      =
+
+CFLAGS   += $(CPP_FLAGS)
+CXXFLAGS += $(CPP_FLAGS)
 
 ######################################################################
 

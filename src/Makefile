@@ -41,6 +41,7 @@ TARGETS = shadow
 SOURCES = main.cpp shadow.cpp
 HEADERS = shadow.h
 
+CPP_DEFINES       = -DDEBUG
 CXX_WARNING_FLAGS = -Wall -Wextra -Weffc++
 CXX_EXTRA_FLAGS   = -std=c++0x -pipe
 CXX_DEBUG_FLAGS   = -ggdb3
