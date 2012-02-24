@@ -1,5 +1,5 @@
 ######################################################################
-# File: mk/tools.mk                             Part of Shadow World #
+# File: mk/clean.mk                             Part of Shadow World #
 #                                                                    #
 # Copyright (C) 2012, Joachim Pileborg and individual contributors.  #
 # All rights reserved.                                               #
@@ -35,14 +35,20 @@
 #                                                                    #
 ######################################################################
 
-CC  = gcc
-CXX = g++
-LD  = g++
+######################################################################
 
-CFLAGS   =
-CXXFLAGS =
-LDFLAGS  =
-LIBS     =
+.PHONY: some_clean
+some_clean:
+
+.PHONY: clean
+clean: some_clean
+	-rm -f *.o
+
+.PHONY: realclean
+realclean: clean
+ifneq ($(TARGETS),)
+	-rm -f $(TARGETS)
+endif
 
 ######################################################################
 
