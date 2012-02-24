@@ -42,9 +42,42 @@ namespace shadow {
 
 /* **************************************************************** */
 
+namespace
+{
+	void init(int argc, char *argv[])
+	{
+		// TODO: Load configuration file
+		// TODO: Parse arguments
+		// TODO: Setup logging
+		// TODO: Other misc. setup
+		// TODO: Network setup
+	}
+
+	void boot()
+	{
+		// TODO: Database setup
+		// TODO: Load world
+	}
+
+	void clean()
+	{
+		// TODO: Network cleanup
+		// TODO: Save unsave data
+		// TODO: Database cleanup
+		// TODO: Other misc. cleanup
+		// TODO: Logging cleanup
+	}
+}
+
+/* **************************************************************** */
+
 int main(int argc, char *argv[])
 {
-	std::cout << "Hello world\n";
+	init(argc, argv);
+
+	boot();
+
+	clean();
 
 	return 0;
 }
