@@ -38,6 +38,9 @@
 
 #include "shadow.h"
 
+#include <thread>
+#include <chrono>
+
 namespace shadow {
 
 /* **************************************************************** */
@@ -76,6 +79,7 @@ namespace
 	{
 		while (keep_mainloop_running)
 		{
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 	}
 }
