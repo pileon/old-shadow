@@ -67,6 +67,17 @@ namespace
 		// TODO: Other misc. cleanup
 		// TODO: Logging cleanup
 	}
+
+	/* ************************************************************ */
+
+	bool keep_mainloop_running = true;
+
+	void mainloop()
+	{
+		while (keep_mainloop_running)
+		{
+		}
+	}
 }
 
 /* **************************************************************** */
@@ -76,6 +87,8 @@ int main(int argc, char *argv[])
 	init(argc, argv);
 
 	boot();
+
+	mainloop();
 
 	clean();
 
