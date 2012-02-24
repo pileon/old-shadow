@@ -52,7 +52,7 @@ namespace
 		// TODO: Load configuration file
 		// TODO: Parse arguments
 		// TODO: Setup logging
-		// TODO: Other misc. setup
+		// TODO: Other misc. setup (like signals)
 		// TODO: Network setup
 	}
 
@@ -97,6 +97,11 @@ int main(int argc, char *argv[])
 	clean();
 
 	return 0;
+}
+
+void shutdown()
+{
+	keep_mainloop_running = false;
 }
 
 /* **************************************************************** */
