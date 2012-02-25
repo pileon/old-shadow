@@ -42,11 +42,23 @@ namespace shadow {
 
 /* **************************************************************** */
 
-void config::init(int argc, char *argv[])
+namespace
 {
+
+	/* ************************************************************ */
+
 }
 
-void consig::clean()
+/* **************************************************************** */
+
+void config::init(int argc, char *argv[])
+{
+	// TODO: Set default values
+	// TODO: Load configuration file
+	// TODO: Parse arguments
+}
+
+void config::clean()
 {
 }
 

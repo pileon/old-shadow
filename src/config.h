@@ -43,6 +43,13 @@ namespace config {
 
 /* **************************************************************** */
 
+namespace defaults
+{
+	const int telnet_port_number = 4000;
+}
+
+/* **************************************************************** */
+
 void init(int argc, char *argv[]);
 void clean();
 

@@ -49,8 +49,8 @@ namespace
 {
 	void init(int argc, char *argv[])
 	{
-		// TODO: Load configuration file
-		// TODO: Parse arguments
+		config::init(argc, argv);
+
 		// TODO: Setup logging
 		// TODO: Other misc. setup (like signals)
 		// TODO: Network setup
@@ -69,6 +69,8 @@ namespace
 		// TODO: Database cleanup
 		// TODO: Other misc. cleanup
 		// TODO: Logging cleanup
+
+		config::clean();
 	}
 
 	/* ************************************************************ */
