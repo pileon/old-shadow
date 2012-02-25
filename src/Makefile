@@ -38,8 +38,8 @@
 topdir  = .
 
 TARGETS = shadow
-SOURCES = main.cpp shadow.cpp
-HEADERS = shadow.h
+SOURCES = main.cpp shadow.cpp config.cpp
+HEADERS = shadow.h config.h
 
 CPP_DEFINES       = -DDEBUG
 CXX_WARNING_FLAGS = -Wall -Wextra -Weffc++

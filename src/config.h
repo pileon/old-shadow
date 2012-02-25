@@ -1,8 +1,8 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+#ifndef __CONFIG_H__
+#define __CONFIG_H__ 1
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: config.h                                Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,16 +38,19 @@
 *                                                                    *
 ******************************************************************* */
 
-#include <iostream>
-
-#include "config.h"
-
 namespace shadow {
+namespace config {
+
+/* **************************************************************** */
+
+void init(int argc, char *argv[]);
+void clean();
 
 /* **************************************************************** */
 
 /* **************************************************************** */
 
+} // namespace config
 } // namespace shadow
 
-#endif // __SHADOW_H__
+#endif // __CONFIG_H__

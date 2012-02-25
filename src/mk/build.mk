@@ -56,7 +56,7 @@ VERBOSE = Y
 endif
 
 ifeq ($(VERBOSE),Y)
-silent  = 
+silent  =
 else
 silent  = @
 VERBOSE = N

@@ -1,8 +1,6 @@
-// -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+// -*- coding: utf-8 -*-
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: config.cpp                            Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -19,7 +17,7 @@
 *     provided with the distribution.                                *
 *   o Neither the name of Shadow World nor the names of its          *
 *     contributors may be used to endorse or promote products        *
-*     derived from this software without specific prior written      *
+*     derived from this software without specific prior written      * 
 *     permission.                                                    *
 *                                                                    *
 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             *
@@ -38,16 +36,20 @@
 *                                                                    *
 ******************************************************************* */
 
-#include <iostream>
-
-#include "config.h"
+#include "shadow.h"
 
 namespace shadow {
 
 /* **************************************************************** */
 
+void config::init(int argc, char *argv[])
+{
+}
+
+void consig::clean()
+{
+}
+
 /* **************************************************************** */
 
 } // namespace shadow
-
-#endif // __SHADOW_H__
