@@ -45,6 +45,23 @@ include $(topdir)/mk/tools.mk
 
 ######################################################################
 
+ifeq ($(VERBOSE),y)
+VERBOSE = Y
+endif
+ifeq ($(VERBOSE),true)
+VERBOSE = Y
+endif
+ifeq ($(VERBOSE),TRUE)
+VERBOSE = Y
+endif
+
+ifeq ($(VERBOSE),Y)
+silent  = 
+else
+silent  = @
+VERBOSE = N
+endif
+
 ifeq ($(QUIET),y)
 QUIET = Y
 endif
@@ -56,7 +73,8 @@ QUIET = Y
 endif
 
 ifeq ($(QUIET),Y)
-silent = @
+silent  = @
+VERBOSE =
 endif
 
 ######################################################################
@@ -83,7 +101,7 @@ build_dynamic_libs:
 build_exes: $(filter-out %.a %.so,$(TARGETS))
 
 $(filter-out %.a %.so,$(TARGETS)): $(OBJECTS)
-ifneq ($(silent),)
+ifeq ($(VERBOSE),N)
 	@echo "LINK $@"
 endif
 	$(silent)$(LD) $(LDFLAGS) $^ -o $@ $(LIBS)
@@ -98,13 +116,13 @@ endif
 ######################################################################
 
 .obj/%.o: %.c
-ifneq ($(silent),)
+ifeq ($(VERBOSE),N)
 	@echo "COMP $<"
 endif
 	$(silent)$(CC) $(CFLAGS) -c -o $@ $^
 
 .obj/%.o: %.cpp
-ifneq ($(silent),)
+ifeq ($(VERBOSE),N)
 	@echo "COMP $<"
 endif
 	$(silent)$(CXX) $(CXXFLAGS) -MMD -MF "`echo $@ | sed 's#.obj/\(.*\)\.o$$#.dep/\1.d#'`" -MT $@ -c "$<" -o "$@"
