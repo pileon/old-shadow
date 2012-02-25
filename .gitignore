@@ -1,2 +1,4 @@
 *.o
 src/shadow
+.obj/
+.dep/

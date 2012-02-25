@@ -42,10 +42,11 @@ some_clean:
 
 .PHONY: clean
 clean: some_clean
-	-rm -f *.o
+	-rm -rf .obj
 
 .PHONY: realclean
 realclean: clean
+	-rm -rf .dep
 ifneq ($(TARGETS),)
 	-rm -f $(TARGETS)
 endif

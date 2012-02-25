@@ -46,6 +46,8 @@ CXX_WARNING_FLAGS = -Wall -Wextra -Weffc++
 CXX_EXTRA_FLAGS   = -std=c++0x -pipe
 CXX_DEBUG_FLAGS   = -ggdb3
 
+QUIET = Y
+
 ######################################################################
 
 .PHONY: default

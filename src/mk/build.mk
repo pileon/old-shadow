@@ -35,11 +35,29 @@
 #                                                                    #
 ######################################################################
 
-OBJECTS  = $(patsubst %.c,%.o,$(filter %.c,$(SOURCES)))
-OBJECTS += $(patsubst %.cpp,%.o,$(filter %.cpp,$(SOURCES)))
+TOBJS    = $(patsubst %.c,%.o,$(filter %.c,$(SOURCES)))
+TOBJS   += $(patsubst %.cpp,%.o,$(filter %.cpp,$(SOURCES)))
 # TODO: Add other source file types as well?
 
+OBJECTS  = $(TOBJS:%.o=.obj/%.o)
+
 include $(topdir)/mk/tools.mk
+
+######################################################################
+
+ifeq ($(QUIET),y)
+QUIET = Y
+endif
+ifeq ($(QUIET),true)
+QUIET = Y
+endif
+ifeq ($(QUIET),TRUE)
+QUIET = Y
+endif
+
+ifeq ($(QUIET),Y)
+silent = @
+endif
 
 ######################################################################
 
@@ -47,7 +65,7 @@ include $(topdir)/mk/tools.mk
 build_all: pre_build build_targets post_build
 
 .PHONY: pre_build
-pre_build:
+pre_build: .dep .obj
 
 .PHONY: post_build
 post_build:
@@ -65,8 +83,37 @@ build_dynamic_libs:
 build_exes: $(filter-out %.a %.so,$(TARGETS))
 
 $(filter-out %.a %.so,$(TARGETS)): $(OBJECTS)
-	$(LD) $(LDFLAGS) $^ -o $@ $(LIBS)
+ifneq ($(silent),)
+	@echo "LINK $@"
+endif
+	$(silent)$(LD) $(LDFLAGS) $^ -o $@ $(LIBS)
 
 ######################################################################
+
+# Folders
+
+.dep .obj:
+	$(silent)-mkdir $@
+
+######################################################################
+
+.obj/%.o: %.c
+ifneq ($(silent),)
+	@echo "COMP $<"
+endif
+	$(silent)$(CC) $(CFLAGS) -c -o $@ $^
+
+.obj/%.o: %.cpp
+ifneq ($(silent),)
+	@echo "COMP $<"
+endif
+	$(silent)$(CXX) $(CXXFLAGS) -MMD -MF "`echo $@ | sed 's#.obj/\(.*\)\.o$$#.dep/\1.d#'`" -MT $@ -c "$<" -o "$@"
+
+######################################################################
+
+# Include dependency files
+
+-include $(foreach dep,$(filter %.c,$(SOURCES)),$(dep:%.c=.dep/%.d))
+-include $(foreach dep,$(filter %.cpp,$(SOURCES)),$(dep:%.cpp=.dep/%.d))
 
 ######################################################################
