@@ -122,6 +122,17 @@ namespace config
 				std::cerr << "Illegal line " << line_num << " in configuration file\n";
 				return;
 			}
+
+			auto name  = trim(config_line.substr(0, pos));
+			auto value = trim(config_line.substr(pos));
+
+			if (name.length() == 0 || value.length() == 0)
+			{
+				std::cerr << "Illegal line " << line_num << " in configuration file\n";
+				return;
+			}
+
+			set(name, value);
 		}
 
 		void load_config_file(int argc, char *argv[])
@@ -131,9 +142,11 @@ namespace config
 			std::ifstream config_file{get<std::string>("config-file-name")};
 			if (!config_file)
 			{
-				// TODO: Check if file exists, or for a "real" error
-				std::cerr << "Error opening configuration file: "
-						  << std::strerror(errno) << '\n';
+				if (errno != ENOENT)
+				{
+					std::cerr << "Error opening configuration file: "
+							  << std::strerror(errno) << '\n';
+				}
 				return;
 			}
 
