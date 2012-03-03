@@ -105,7 +105,7 @@ namespace config
 			return std::string(b, e + 1);
 		}
 
-		void parse_config_line(std::string config_line)
+		void parse_config_line(std::string config_line, const int line_num)
 		{
 			auto comment_pos = config_line.find('#');
 			if (comment_pos != std::string::npos)
@@ -115,6 +115,13 @@ namespace config
 
 			if (config_line.length() == 0)
 				return;
+
+			auto pos = config_line.find('=');
+			if (pos == std::string::npos)
+			{
+				std::cerr << "Illegal line " << line_num << " in configuration file\n";
+				return;
+			}
 		}
 
 		void load_config_file(int argc, char *argv[])
@@ -131,8 +138,9 @@ namespace config
 			}
 
 			std::string config_line;
+			int line_num = 0;
 			while (std::getline(config_file, config_line))
-				parse_config_line(config_line);
+				parse_config_line(config_line, ++line_num);
 
 			if (!config_file.eof())
 			{
