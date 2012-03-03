@@ -38,7 +38,8 @@
 
 #include "shadow.h"
 
-#include <memory>
+#include <unistd.h>
+#include <getopt.h>
 
 namespace shadow {
 
@@ -46,11 +47,44 @@ std::unordered_map<std::string, std::string> config::config_values;
 
 /* **************************************************************** */
 
-namespace
+namespace config
 {
-	void set_defaults()
+	namespace
 	{
-		config::set("telnet-port-number", config::defaults::telnet_port_number);
+		void set_defaults()
+		{
+			set("telnet-port-number", defaults::telnet_port_number);
+		}
+
+		/* ******************************************************** */
+
+		static const option long_options[] = {
+			{ "config", required_argument, nullptr, 'c' },
+			{ nullptr, 0, nullptr, 0 }
+		};
+
+		static const char short_options[] = "c:hv";
+
+		void get_config_file_name(int argc, char *argv[])
+		{
+			int c;
+
+			while ((c = getopt_long(argc, argv, short_options, long_options, nullptr)))
+			{
+				if (c == 'c')
+				{
+					set("config-file-name", optarg);
+					break;
+				}
+			}
+
+			optind = 0;
+		}
+
+		void load_config_file(int argc, char *argv[])
+		{
+			get_config_file_name(argc, argv);
+		}
 	}
 }
 
@@ -60,7 +94,8 @@ void config::init(int argc, char *argv[])
 {
 	set_defaults();
 
-	// TODO: Load configuration file
+	load_config_file(argc, argv);
+
 	// TODO: Parse arguments
 }
 
