@@ -38,6 +38,10 @@
 
 #include "shadow.h"
 
+#include <fstream>
+#include <cstring>
+#include <cctype>
+
 #include <unistd.h>
 #include <getopt.h>
 
@@ -74,16 +78,67 @@ namespace config
 				if (c == 'c')
 				{
 					set("config-file-name", optarg);
-					break;
+					optind = 0;
+					return;
 				}
 			}
 
-			optind = 0;
+			set("config-file-name", std::string(argv[0]) + ".cfg");
+		}
+
+		std::string trim(const std::string &str)
+		{
+			std::string::const_iterator b, e;
+
+			for (b = str.begin(); b != str.end(); ++b)
+			{
+				if (!std::isspace(*b))
+					break;
+			}
+
+			for (e = str.end() - 1; e > b; --e)
+			{
+				if (!std::isspace(*e))
+					break;
+			}
+
+			return std::string(b, e + 1);
+		}
+
+		void parse_config_line(std::string config_line)
+		{
+			auto comment_pos = config_line.find('#');
+			if (comment_pos != std::string::npos)
+				config_line = config_line.substr(0, comment_pos - 1);
+
+			config_line = trim(config_line);
+
+			if (config_line.length() == 0)
+				return;
 		}
 
 		void load_config_file(int argc, char *argv[])
 		{
 			get_config_file_name(argc, argv);
+
+			std::ifstream config_file{get<std::string>("config-file-name")};
+			if (!config_file)
+			{
+				// TODO: Check if file exists, or for a "real" error
+				std::cerr << "Error opening configuration file: "
+						  << std::strerror(errno) << '\n';
+				return;
+			}
+
+			std::string config_line;
+			while (std::getline(config_file, config_line))
+				parse_config_line(config_line);
+
+			if (!config_file.eof())
+			{
+				std::cerr << "Error reading configuration file: "
+						  << std::strerror(errno) << '\n';
+			}
 		}
 	}
 }
