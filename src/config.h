@@ -56,81 +56,35 @@ void clean();
 
 /* **************************************************************** */
 
-class values_container
+extern std::unordered_map<std::string, std::string> config_values;
+
+template<typename T>
+void set(const std::string &name, const T &value)
 {
-public:
-	class value
-	{
-		friend class values_container;
+	std::ostringstream os;
+	os << value;
 
-	public:
+	config_values.insert(std::pair<std::string, std::string>(name, os.str()));
+}
 
-	private:
-		value();
-	};
-
-	values_container();
-
-	const value &get(const std::string &name) const
-		{
-			static value v;
-			return v;
-		}
-	value &get(const std::string &name)
-		{
-			static value v;
-			return v;
-		}
-
-	template<typename T>
-	const T &get(const std::string &) const
-		{
-			static T v;
-			return v;
-		}
-
-private:
-	std::unordered_map<std::string, value> m_values;
-};
-
-extern values_container values;
-
-
-/* **************************************************************** */
-
-/*
-class config
+template<typename T>
+const T get(const std::string &name)
 {
-public:
-	static void init(int argc, char *argv[]);
-	static void clean();
-
-	config()
-		: m_config{}
-		{}
-	~config()
-		{}
-
-	int operator[](const std::string &)
-		{ return 0; }
-
-
-
-
-private:
-
-	class value
+	auto value_iter = config_values.find(name);
+	if (value_iter  == config_values.end())
 	{
+		set(name, T{});
+		value_iter = config_values.find(name);
+	}
 
-	};
+	std::istringstream is(value_iter->second);
+	T value;
 
-	void set_defaults();
+	is >> value;
 
-	std::unordered_map<std::string, value> m_config;
-};
+	return value;
+}
 
-extern class config config;
-*/
 /* **************************************************************** */
 
 } // namespace config

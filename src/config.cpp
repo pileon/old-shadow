@@ -42,13 +42,23 @@
 
 namespace shadow {
 
-config::values_container config::values;
+std::unordered_map<std::string, std::string> config::config_values;
+
+/* **************************************************************** */
+
+namespace
+{
+	void set_defaults()
+	{
+		config::set("telnet-port-number", config::defaults::telnet_port_number);
+	}
+}
 
 /* **************************************************************** */
 
 void config::init(int argc, char *argv[])
 {
-	// TODO: set_defaults();
+	set_defaults();
 
 	// TODO: Load configuration file
 	// TODO: Parse arguments
@@ -57,21 +67,6 @@ void config::init(int argc, char *argv[])
 void config::clean()
 {
 }
-
-/* **************************************************************** */
-
-config::values_container::values_container()
-{
-}
-
-/* **************************************************************** */
-
-#if 0
-void config::set_defaults()
-{
-	// TODO: implement this
-}
-#endif
 
 /* **************************************************************** */
 
