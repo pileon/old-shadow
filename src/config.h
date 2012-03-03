@@ -38,6 +38,9 @@
 *                                                                    *
 ******************************************************************* */
 
+#include <unordered_map>
+#include <sstream>
+
 namespace shadow {
 namespace config {
 
@@ -48,12 +51,35 @@ namespace defaults
 	const int telnet_port_number = 4000;
 }
 
+namespace values
+{
+	extern std::unordered_map<std::string, std::string> values;
+}
+
 /* **************************************************************** */
 
 void init(int argc, char *argv[]);
 void clean();
 
 /* **************************************************************** */
+
+template<typename T>
+inline void set(const std::string &name, const T &value)
+{
+	std::ostringstream os;
+	os << value;
+	values::values[name] = os.str();
+}
+
+template<typename T>
+inline const T &get(const std::string &name)
+{
+	auto &value = values::values.find(name);
+	if (value == values::values.end())
+		set(name, "");
+
+	return values::values[name];
+}
 
 /* **************************************************************** */
 

@@ -40,6 +40,9 @@
 
 namespace shadow {
 
+
+std::unordered_map<std::string, std::string> config::values::values;
+
 /* **************************************************************** */
 
 namespace
