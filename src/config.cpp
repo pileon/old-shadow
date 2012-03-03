@@ -38,29 +38,17 @@
 
 #include "shadow.h"
 
+#include <memory>
+
 namespace shadow {
 
-
-std::unordered_map<std::string, std::string> config::values::values;
-
-/* **************************************************************** */
-
-namespace
-{
-	void set_defaults()
-	{
-		config::set("telnet_port", config::defaults::telnet_port_number);
-	}
-
-	/* ************************************************************ */
-
-}
+config::values_container config::values;
 
 /* **************************************************************** */
 
 void config::init(int argc, char *argv[])
 {
-	set_defaults();
+	// TODO: set_defaults();
 
 	// TODO: Load configuration file
 	// TODO: Parse arguments
@@ -69,6 +57,21 @@ void config::init(int argc, char *argv[])
 void config::clean()
 {
 }
+
+/* **************************************************************** */
+
+config::values_container::values_container()
+{
+}
+
+/* **************************************************************** */
+
+#if 0
+void config::set_defaults()
+{
+	// TODO: implement this
+}
+#endif
 
 /* **************************************************************** */
 

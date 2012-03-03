@@ -44,16 +44,9 @@
 namespace shadow {
 namespace config {
 
-/* **************************************************************** */
-
 namespace defaults
 {
 	const int telnet_port_number = 4000;
-}
-
-namespace values
-{
-	extern std::unordered_map<std::string, std::string> values;
 }
 
 /* **************************************************************** */
@@ -63,24 +56,81 @@ void clean();
 
 /* **************************************************************** */
 
-template<typename T>
-inline void set(const std::string &name, const T &value)
+class values_container
 {
-	std::ostringstream os;
-	os << value;
-	values::values[name] = os.str();
-}
+public:
+	class value
+	{
+		friend class values_container;
 
-template<typename T>
-inline const T &get(const std::string &name)
+	public:
+
+	private:
+		value();
+	};
+
+	values_container();
+
+	const value &get(const std::string &name) const
+		{
+			static value v;
+			return v;
+		}
+	value &get(const std::string &name)
+		{
+			static value v;
+			return v;
+		}
+
+	template<typename T>
+	const T &get(const std::string &) const
+		{
+			static T v;
+			return v;
+		}
+
+private:
+	std::unordered_map<std::string, value> m_values;
+};
+
+extern values_container values;
+
+
+/* **************************************************************** */
+
+/*
+class config
 {
-	auto &value = values::values.find(name);
-	if (value == values::values.end())
-		set(name, "");
+public:
+	static void init(int argc, char *argv[]);
+	static void clean();
 
-	return values::values[name];
-}
+	config()
+		: m_config{}
+		{}
+	~config()
+		{}
 
+	int operator[](const std::string &)
+		{ return 0; }
+
+
+
+
+private:
+
+	class value
+	{
+
+	};
+
+	void set_defaults();
+
+	std::unordered_map<std::string, value> m_config;
+};
+
+extern class config config;
+*/
 /* **************************************************************** */
 
 } // namespace config
