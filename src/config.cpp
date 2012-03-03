@@ -73,7 +73,7 @@ namespace config
 		{
 			int c;
 
-			while ((c = getopt_long(argc, argv, short_options, long_options, nullptr)))
+			while ((c = getopt_long(argc, argv, short_options, long_options, nullptr)) != -1)
 			{
 				if (c == 'c')
 				{
@@ -109,7 +109,7 @@ namespace config
 		{
 			auto comment_pos = config_line.find('#');
 			if (comment_pos != std::string::npos)
-				config_line = config_line.substr(0, comment_pos - 1);
+				config_line = config_line.substr(0, comment_pos > 0 ? comment_pos - 1 : comment_pos);
 
 			config_line = trim(config_line);
 
@@ -139,6 +139,8 @@ namespace config
 		{
 			get_config_file_name(argc, argv);
 
+			std::clog << "Reding configuration values from "
+					  << get<std::string>("config-file-name") << '\n';
 			std::ifstream config_file{get<std::string>("config-file-name")};
 			if (!config_file)
 			{
