@@ -75,11 +75,22 @@ namespace config
 
 			while ((c = getopt_long(argc, argv, short_options, long_options, nullptr)) != -1)
 			{
-				if (c == 'c')
+				switch (c)
 				{
+				case 'c':
 					set("config-file-name", optarg);
 					optind = 0;
-					return;
+					break;
+
+				case 'h':
+				case 'v':
+					exit(0);
+					/*NOTREACHED*/
+
+				case '?':
+				default:
+					// TODO: Show help
+					break;
 				}
 			}
 
