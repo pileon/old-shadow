@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/arrow/Projects/MUD/shadow",
+			"folder_exclude_patterns": [".git"],
+			"file_exclude_patterns": ["shadow.sublime-project", "shadow.sublime-workspace"]
+		}
+	]
+}

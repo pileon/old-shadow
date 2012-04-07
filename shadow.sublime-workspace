@@ -1,0 +1,344 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"name",
+				"namespace"
+			],
+			[
+				"inc",
+				"include"
+			],
+			[
+				"fi",
+				"filename"
+			],
+			[
+				"pro",
+				"property_value"
+			],
+			[
+				"syst",
+				"system_category"
+			],
+			[
+				"S_",
+				"S_CHGPWD2"
+			],
+			[
+				"S_C",
+				"S_CHGPWD2"
+			],
+			[
+				"S_M",
+				"S_MENU"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"command_palette":
+	{
+		"height": 284.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"conso",
+				"Set Syntax: R Console"
+			],
+			[
+				"Snippet: ",
+				"Snippet: C++ source file header"
+			],
+			[
+				"Snippet: C",
+				"Snippet: Comment"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/arrow/Develop/MUD/TM/src/config.h",
+		"/home/arrow/Develop/MUD/TM/src/logger.h",
+		"/home/arrow/Develop/MUD/TM/src/net/address.h",
+		"/home/arrow/Develop/MUD/TM/src/tm.h",
+		"/home/arrow/Develop/MUD/TM/src/net/base_socket.h",
+		"/home/arrow/Develop/MUD/TM/src/config.cpp",
+		"/home/arrow/Develop/MUD/TM/src/logger.cpp",
+		"/home/arrow/Develop/MUD/TM/src/net/Makefile",
+		"/home/arrow/Develop/MUD/TM/src/main.cpp",
+		"/home/arrow/Develop/MUD/TM/src/net/address.cpp",
+		"/home/arrow/Develop/MUD/TM/src/Makefile",
+		"/home/arrow/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/arrow/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
+		"/home/arrow/Develop/MUD/raven/src/Makefile.am",
+		"/home/arrow/Develop/MUD/raven/configure.ac",
+		"/home/arrow/Develop/MUD/raven/src/config.cpp",
+		"/home/arrow/Develop/MUD/raven/Makefile.am",
+		"/home/arrow/Develop/MUD/raven/src/host/posix/main.cpp",
+		"/home/arrow/Develop/MUD/raven/src/host/host.h",
+		"/home/arrow/Develop/MUD/raven/raven.sublime-project",
+		"/home/arrow/Develop/MUD/raven/src/host/Makefile.am",
+		"/home/arrow/Develop/MUD/raven/src/log.h",
+		"/home/arrow/my-system.txt",
+		"/home/arrow/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
+		"/home/arrow/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
+		"/home/arrow/Develop/MUD/raven/README.html",
+		"/home/arrow/Develop/MUD/raven/src/raven.cpp",
+		"/home/arrow/Develop/MUD/raven/src/host/posix/signal.cpp",
+		"/home/arrow/.config/sublime-text-2/Packages/User/cpp-header.sublime-snippet",
+		"/home/arrow/.config/sublime-text-2/Packages/User/h-header.sublime-snippet",
+		"/home/arrow/Develop/MUD/raven/src/log.cpp",
+		"/home/arrow/Develop/MUD/raven/aclocal.m4",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/mudconfig.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/lexer.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/parser.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/shadow.cfg",
+		"/home/arrow/Develop/MUD/old/shadow-99/README",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/original/gai/Makefile",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/original/gai/unp.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/testarea/test.are",
+		"/home/arrow/Develop/MUD/old/shadow-99/doc/worldfiles.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/text/motd.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/text/wmotd.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/text/rules.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/classes.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/Makefile",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/mudconfig.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/README",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/index",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/testarea/test.wld",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/stonehill/README",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/stonehill/main/main.mon",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/stonehill/main/main.zon",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/stonehill/main/main.loc",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/areas.lst",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/files.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/lib/world/testarea.tgz",
+		"/home/arrow/Develop/MUD/old/shadow-99.sublime-project",
+		"/home/arrow/Develop/MUD/old/shadow-99/INSTALL",
+		"/home/arrow/Develop/MUD/old/shadow-99/map.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/COPYING",
+		"/home/arrow/Develop/MUD/old/shadow-99/shadow.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/skills.txt",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/string.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/string.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/shadow.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/shadow.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/item.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/object.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/location.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/monster.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/user.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_aistruct.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_echeck.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gai_strerror.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/getnameinfo.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/cmd_move.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/skills.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/skills.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/cmd_info.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/interp.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/interp.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/object.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/area.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/zone.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/character.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/player.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/factory.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/loader.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/location.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/parser.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/player.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/socket.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/socket.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/telnet.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/server.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/signal.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/loader.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/area.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/zone.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/config.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/dmalloc.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/utils.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/server.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/telnet.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/user.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/character.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/Makefile",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/Makefile.orig",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/addrinfo.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/freeaddrinfo.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_clone.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_nsearch.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_port.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_serv.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_unix.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gai_hdr.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gai_hdr.lh",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/getaddrinfo.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gn_ipv46.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/test1.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/testga.c",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/unp.h",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/shadow.cfg",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/wizard.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/monster.cc",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/olle",
+		"/home/arrow/Develop/MUD/old/shadow-99/src/heartbeat.cc"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"#",
+			" >",
+			"Closing connection",
+			"get_peer_port",
+			"menu_pick",
+			"Shadow World",
+			"is_name",
+			"sname",
+			"cfg_float",
+			"strip_spaces",
+			"{ -1, NULL, }",
+			", NULL, },  /* SKILL_",
+			"reset_place",
+			"strlen",
+			"/********************************************************************",
+			"ctrl+b",
+			"\"f5",
+			"ctrl+b"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"{ -1, NULL, { 0 }, { 0 } }",
+			", NULL, { 0 }, { 0 } },  /* SKILL_"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 188.0,
+	"status_bar_visible": true
+}
