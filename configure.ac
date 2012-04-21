@@ -36,8 +36,8 @@ dnl #                                                                    #
 dnl ######################################################################
 
 AC_INIT(shadow, [0.1.0], [shadow@pileborg.se], , [https://github.com/pileon/shadow])
-dnl AC_CONFIG_AUX_DIR([scripts])
-dnl AC_CONFIG_MACRO_DIR([scripts])
+AC_CONFIG_AUX_DIR([scripts])
+AC_CONFIG_MACRO_DIR([scripts])
 AM_INIT_AUTOMAKE
 AC_COPYRIGHT([Parts of the configure script is copyright (C) 2012, Joachim Pileborg and individual contributors.])
 AC_CONFIG_SRCDIR([src/shadow.h])
