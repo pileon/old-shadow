@@ -50,7 +50,8 @@ if [ "$1" = "debug" ]; then
 	echo "    --with-mtrace"
 	echo "    --with-debug"
 	echo "    --with-trace"
-	./configure --with-gcc=4.7 --enable-gdb3 --enable-warnings --disable-opt --with-mtrace --with-debug --with-trace
+	echo "    --enable-maintainer-mode"
+	./configure --with-gcc=4.7 --enable-gdb3 --enable-warnings --disable-opt --with-mtrace --with-debug --with-trace --enable-maintainer-mode
 else
 	echo "Running './configure' without parameters"
 	./configure
