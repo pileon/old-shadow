@@ -58,6 +58,18 @@ AC_ARG_WITH(gcc,
    fi],
   [AC_PROG_CXX])
 
+AC_PROG_CXX_C_O
+AC_PROG_CXXCPP
+
+dnl # Set default language to C++
+AC_LANG([C++])
+
+dnl # General programs, and their arguments
+dnl AC_PROG_RANLIB
+AC_PROG_LIBTOOL
+
+AC_REQUIRE_CPP
+
 dnl ######################################################################
 dnl # Checks for libraries
 
