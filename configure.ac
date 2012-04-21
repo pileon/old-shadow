@@ -214,6 +214,22 @@ dnl TODO: Check for: Raw strings (C++11 R"delim(string)delim")
 dnl ######################################################################
 dnl # Checks for library functions
 
+AC_CHECK_FUNCS([signal sigaction stat fstat])
+
+AC_MSG_CHECKING([for __gnu_cxx::__verbose_terminate_handler])
+AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+     [
+#include <exception>
+     ],
+     [[
+       std::set_terminate(__gnu_cxx::__verbose_terminate_handler);
+     ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE___GNU_CXX____VERBOSE_TERMINATE_HANDLER, 1,
+             [Define to 1 if __gnu_cxx::__verbose_terminate_handler is available])],
+  [AC_MSG_RESULT(no)])
+
 dnl ######################################################################
 dnl # Checks for system services
 
