@@ -52,8 +52,11 @@ dnl # First check which GCC version is wanted
 AC_ARG_WITH(gcc,
   [  --with-gcc=<version>    Use GCC (gcc and g++) of the specified version],
   [if test "$withval" != yes; then
-     AC_PROG_CXX([g++-$withval g++])
-   fi])
+     AC_PROG_CXX([g++-$withval g++ c++q])
+   else
+     AC_PROG_CXX
+   fi],
+  [AC_PROG_CXX])
 
 dnl ######################################################################
 
