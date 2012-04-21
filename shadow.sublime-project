@@ -3,8 +3,19 @@
 	[
 		{
 			"path": "/home/arrow/Projects/MUD/shadow",
-			"folder_exclude_patterns": [".git"],
-			"file_exclude_patterns": ["shadow.sublime-project", "shadow.sublime-workspace"]
+			"folder_exclude_patterns": [".git", "autom4te.cache", "src"],
+			"file_exclude_patterns": [
+				"shadow.sublime-project", "shadow.sublime-workspace",
+				"Makefile.in", "Makefile", "config.*", "configure",
+				"install-sh", "missing"
+				]
+		},
+		{
+			"path": "/home/arrow/Projects/MUD/shadow/src",
+			"file_exclude_patterns": [
+				"Makefile", "Makefile.in",
+				"src/host/autoconf.*", "src/host/stamp-h1"
+				]
 		}
 	]
 }
