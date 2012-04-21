@@ -1,0 +1,28 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/arrow/Projects/MUD/shadow",
+			"folder_exclude_patterns": [
+				".git", "autom4te.cache", "src", "scripts"
+				],
+			"file_exclude_patterns": [
+				"shadow.sublime-project", "shadow.sublime-workspace",
+				"Makefile.in", "Makefile", "config.*", "configure",
+				"install-sh", "missing", "aclocal.m4", "libtool", "conftest.*",
+				"confdefs.h"
+				]
+		},
+		{
+			"path": "/home/arrow/Projects/MUD/shadow/src",
+			"folder_exclude_patterns": [
+				".deps"
+				],
+			"file_exclude_patterns": [
+				"Makefile", "Makefile.in",
+				"src/host/autoconf.*", "src/host/stamp-h1",
+				".dirstamp"
+				]
+		}
+	]
+}
