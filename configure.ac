@@ -222,7 +222,17 @@ AC_COMPILE_IFELSE(
      [Define to 1 if the compiler supports C++11 unicode string literals])],
   [AC_MSG_RESULT(no)])
 
-dnl TODO: Check for: Raw strings (C++11 R"delim(string)delim")
+AC_MSG_CHECKING([if ${CXX-g++} supports raw string literals])
+AC_COMPILE_IFELSE(
+  [AC_LANG_PROGRAM(
+    [],
+    [[
+        char s[] = R"delim(string)delim";
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE_RAW_STRINGS, 1,
+     [Define to 1 if the compiler supports C++11 raw string literals])],
+  [AC_MSG_RESULT(no)])
 
 dnl ######################################################################
 dnl # Checks for library functions
