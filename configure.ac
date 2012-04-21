@@ -97,13 +97,7 @@ if test $cxx_have_ggdb3 = yes; then
   CXXFLAGS=`echo $CXXFLAGS | sed 's/\-g//'`
 fi
 
-dnl TODO: Check for -std=c++11, if not available check for -std=c++0x
-
-dnl AC_ARG_ENABLE([c++0x],
-dnl   [  --enable-c++0x          enable use of new C++ standard features],
-dnl   [if test $enableval = yes; then
-dnl      AC_CHECK_CXX_ARGUMENT(-std=c++0x)
-dnl    fi])
+AC_CHECK_CXX_ARGUMENT([-std=c++11], [], [AC_CHECK_CXX_ARGUMENT([-std=c++0x])])
 
 AC_CHECK_CXX_ARGUMENT(-pipe)
 
