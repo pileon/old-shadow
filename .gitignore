@@ -3,5 +3,7 @@ Makefile.in
 autom4te.cache/
 config.*
 configure
+install-sh
+missing
 src/host/autoconf.*
 src/host/stamp-h1
