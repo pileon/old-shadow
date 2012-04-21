@@ -13,3 +13,6 @@ src/host/autoconf.*
 src/host/stamp-h1
 src/host/posix/.dirstamp
 .deps/
+src/host/libhost.a
+*.o
+src/shadow

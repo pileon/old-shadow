@@ -76,6 +76,9 @@ dnl # Checks for libraries
 dnl ######################################################################
 dnl # Checks for header files
 
+AC_CHECK_HEADERS([sys/types.h sys/stat.h stdlib.h string.h memory.h strings.h])
+AC_CHECK_HEADERS([inttypes.h stdint.h unistd.h errno.h signal.h sys/stat.h])
+
 dnl ######################################################################
 dnl # Checks for types
 
@@ -120,7 +123,6 @@ AC_ARG_ENABLE([warnings],
      AC_CHECK_CXX_ARGUMENT(-Wconversion)
      AC_CHECK_CXX_ARGUMENT(-Wsign-conversion)
      AC_CHECK_CXX_ARGUMENT(-Woverloaded-virtual)
-     AC_CHECK_CXX_ARGUMENT(-pedantic)
    fi])
 
 AC_ARG_ENABLE([opt],
@@ -178,8 +180,6 @@ AC_LINK_IFELSE(
   [AC_MSG_RESULT(no)])
 
 AC_MSG_CHECKING([if ${CXX-g++} supports nullptr])
-old_CXXFLAGS=$CXXFLAGS
-CXXFLAGS=$EXTRA_CXXFLAGS
 AC_LINK_IFELSE(
   [AC_LANG_PROGRAM(
     [],
@@ -190,7 +190,6 @@ AC_LINK_IFELSE(
    AC_DEFINE(HAVE_NULLPTR, 1,
      [Define to 1 if the compiler supports the nullptr C++0x constant])],
   [AC_MSG_RESULT(no)])
-CXXFLAGS=$old_CXXFLAGS
 
 AC_MSG_CHECKING([if ${CXX-g++} supports computed gotos])
 AC_COMPILE_IFELSE(
