@@ -85,6 +85,128 @@ dnl # Checks for structures
 dnl ######################################################################
 dnl # Checks for compiler characteristics
 
+AC_C_BACKSLASH_A
+AC_C_BACKSLASH_E
+
+AC_ARG_ENABLE([gdb3],
+  [  --enable-gdb3           enable higher debug level option to the compiler],
+  [if test $enableval = yes; then
+     AC_CHECK_CXX_ARGUMENT(-ggdb3, [cxx_have_ggdb3=yes], [cxx_have_ggdb3=no])
+   fi])
+if test $cxx_have_ggdb3 = yes; then
+  CXXFLAGS=`echo $CXXFLAGS | sed 's/\-g//'`
+fi
+
+dnl TODO: Check for -std=c++11, if not available check for -std=c++0x
+
+dnl AC_ARG_ENABLE([c++0x],
+dnl   [  --enable-c++0x          enable use of new C++ standard features],
+dnl   [if test $enableval = yes; then
+dnl      AC_CHECK_CXX_ARGUMENT(-std=c++0x)
+dnl    fi])
+
+AC_CHECK_CXX_ARGUMENT(-pipe)
+
+AC_ARG_ENABLE([warnings],
+  [  --enable-warnings       enable extra warnings from the compiler],
+  [if test $enableval = yes; then
+     AC_CHECK_CXX_ARGUMENT(-Wall)
+     AC_CHECK_CXX_ARGUMENT(-Wextra)
+     AC_CHECK_CXX_ARGUMENT(-Weffc++)
+     AC_CHECK_CXX_ARGUMENT(-Wconversion)
+     AC_CHECK_CXX_ARGUMENT(-Wsign-conversion)
+     AC_CHECK_CXX_ARGUMENT(-Woverloaded-virtual)
+     AC_CHECK_CXX_ARGUMENT(-pedantic)
+   fi])
+
+AC_ARG_ENABLE([opt],
+  [  --disable-opt           disable compiler optimizations],
+  [if test $enableval = no; then
+     CXXFLAGS=`echo "$CXXFLAGS" | sed 's/-O2//'`
+   fi])
+
+AC_ARG_ENABLE([profiling],
+  [  --enable-profiling      enable compiler profiling of code],
+  [if test $enableval = yes; then
+     :
+   fi])
+
+AC_MSG_CHECKING([if ${CXX-g++} supports __PRETTY_FUNCTION__])
+AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+    [
+#include <iostream>
+    ],
+    [[
+      std::cout << __PRETTY_FUNCTION__;
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE___PRETTY_FUNCTION__, 1,
+     [Define to 1 if the compiler supports the __FUNCTION__ literal])],
+  [AC_MSG_RESULT(no)])
+
+AC_MSG_CHECKING([if ${CXX-g++} supports __FUNCTION__])
+AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+    [
+#include <iostream>
+    ],
+    [[
+      std::cout << __FUNCTION__;
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE___FUNCTION__, 1,
+     [Define to 1 if the compiler supports the __func__ variable])],
+  [AC_MSG_RESULT(no)])
+
+AC_MSG_CHECKING([if ${CXX-g++} supports __func__])
+AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+    [
+#include <iostream>
+    ],
+    [[
+      std::cout << __func__;
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE___FUNC__, 1,
+     [Define to 1 if the compiler supports the __func__ variable])],
+  [AC_MSG_RESULT(no)])
+
+AC_MSG_CHECKING([if ${CXX-g++} supports nullptr])
+old_CXXFLAGS=$CXXFLAGS
+CXXFLAGS=$EXTRA_CXXFLAGS
+AC_LINK_IFELSE(
+  [AC_LANG_PROGRAM(
+    [],
+    [[
+      char *char_null = nullptr;
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE_NULLPTR, 1,
+     [Define to 1 if the compiler supports the nullptr C++0x constant])],
+  [AC_MSG_RESULT(no)])
+CXXFLAGS=$old_CXXFLAGS
+
+AC_MSG_CHECKING([if ${CXX-g++} supports computed gotos])
+AC_COMPILE_IFELSE(
+  [AC_LANG_PROGRAM(
+    [],
+    [[
+      void *my_label_ptr = &&my_label;  /* GCC syntax */
+      goto *my_label_ptr;
+      return 1;
+      my_label:
+      return 0;
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE_COMPUTED_GOTOS, 1,
+     [Define to 1 if the compilers supports computed gotos])],
+  [AC_MSG_RESULT(no)])
+
+dnl TODO: Check for: Unicode string/character support (C++11 u8"\u2018", u"\u2018" and U"\u2018")
+dnl TODO: Check for: Raw strings (C++11 R"delim(string)delim")
+
 dnl ######################################################################
 
 dnl ######################################################################
