@@ -3,11 +3,13 @@
 	[
 		{
 			"path": "/home/arrow/Projects/MUD/shadow",
-			"folder_exclude_patterns": [".git", "autom4te.cache", "src"],
+			"folder_exclude_patterns": [
+				".git", "autom4te.cache", "src", "scripts"
+				],
 			"file_exclude_patterns": [
 				"shadow.sublime-project", "shadow.sublime-workspace",
 				"Makefile.in", "Makefile", "config.*", "configure",
-				"install-sh", "missing", "aclocal.m4", "libtool"
+				"install-sh", "missing", "aclocal.m4", "libtool", "conftest.*"
 				]
 		},
 		{
