@@ -208,7 +208,20 @@ AC_COMPILE_IFELSE(
      [Define to 1 if the compilers supports computed gotos])],
   [AC_MSG_RESULT(no)])
 
-dnl TODO: Check for: Unicode string/character support (C++11 u8"\u2018", u"\u2018" and U"\u2018")
+AC_MSG_CHECKING([if ${CXX-g++} supports Unicode string literals])
+AC_COMPILE_IFELSE(
+  [AC_LANG_PROGRAM(
+    [],
+    [[
+        char     s1[] = u8"\u2018";
+        char16_t s2[] = u"\u2018";
+        char32_t s3[] = U"\u2018";
+    ]])],
+  [AC_MSG_RESULT(yes)
+   AC_DEFINE(HAVE_UNICODE_STRINGS, 1,
+     [Define to 1 if the compiler supports C++11 unicode string literals])],
+  [AC_MSG_RESULT(no)])
+
 dnl TODO: Check for: Raw strings (C++11 R"delim(string)delim")
 
 dnl ######################################################################
