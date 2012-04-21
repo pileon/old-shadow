@@ -16,7 +16,7 @@
 		{
 			"path": "/home/arrow/Projects/MUD/shadow/src",
 			"file_exclude_patterns": [
-				"Makefile",
+				"Makefile", "Makefile.in",
 				"src/host/autoconf.*", "src/host/stamp-h1"
 				]
 		}

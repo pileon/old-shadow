@@ -1,8 +1,6 @@
-// -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+// -*- coding: utf-8 -*-
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: hosts/posix/signal.cpp                  Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,20 +36,62 @@
 *                                                                    *
 ******************************************************************* */
 
-#if HAVE_CONFIG_H
-# include "host/autoconf.h"
+#include "shadow.h"
+#if HAVE_SIGNAL_H
+# include <signal.h>
 #endif
-#include "host/sysdeps.h"
-
-#include <iostream>
-#include <string>
 
 namespace shadow {
+namespace host {
 
 /* **************************************************************** */
 
+namespace
+{
+	typedef RETSIGTYPE sigfunc(int);
+
+	/* ************************************************************ */
+
+#if HAVE_SIGACTION
+	# define signal my_signal
+
+	/*
+	 * New implementation of signal(2), using sigaction(2).
+	 * Taken from the book ``Advanced Programmin in the UNIX Environment''
+	 * by W. Richard Stevens.
+	 */
+	sigfunc *signal(int signo, sigfunc *func)
+	{
+		struct sigaction nact, oact;
+
+		nact.sa_handler = func;
+		nact.sa_flags   = 0;
+# ifdef SA_INTERRUPT
+		nact.sa_flags  |= SA_INTERRUPT;
+# endif
+		sigemptyset(&nact.sa_mask);
+
+		if (sigaction(signo, &nact, &oact) < 0)
+			return SIG_ERR;
+
+		return oact.sa_handler;
+	}
+#endif  // HAVE_SIGACTION
+
+	/* ************************************************************ */
+
+	// Signal handlers
+
+}
+
 /* **************************************************************** */
 
+bool signal_setup()
+{
+	return true;
+}
+
+/* **************************************************************** */
+
+} // namespace host
 } // namespace shadow
-
-#endif // __SHADOW_H__

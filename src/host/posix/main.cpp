@@ -1,6 +1,6 @@
 // -*- coding: utf-8 -*-
 /* *******************************************************************
-* File: main.cpp                                Part of Shadow World *
+* File: host/posix/main.cpp                     Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *

@@ -1,8 +1,8 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+#ifndef __HOST_HOST_H__
+#define __HOST_HOST_H__ 1
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: host/host.h                             Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,20 +38,16 @@
 *                                                                    *
 ******************************************************************* */
 
-#if HAVE_CONFIG_H
-# include "host/autoconf.h"
-#endif
-#include "host/sysdeps.h"
-
-#include <iostream>
-#include <string>
-
 namespace shadow {
+namespace host {
 
 /* **************************************************************** */
 
+bool signal_setup();
+
 /* **************************************************************** */
 
+} // namespace host
 } // namespace shadow
 
-#endif // __SHADOW_H__
+#endif // __HOST_HOST_H__

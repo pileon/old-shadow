@@ -310,6 +310,13 @@ AH_BOTTOM([
 #endif /* __HOST_AUTOCONF_H__ */
 ])
 
+dnl For use in makefiles, since automake can't handle it properly
+AC_SUBST([IFEQ], [ifeq])
+AC_SUBST([IFNEQ], [ifneq])
+AC_SUBST([IFDEF], [ifdef])
+AC_SUBST([ELSE], [else])
+AC_SUBST([ENDIF], [endif])
+
 AC_OUTPUT
 
 dnl ######################################################################

@@ -1,7 +1,7 @@
 dnl ######################################################################
-dnl # File: acinclude.m4                               Part of The Raven #
+dnl # File: acinclude.m4                            Part of Shadow World #
 dnl #                                                                    #
-dnl # Copyright (C) 2011, Joachim Pileborg and individual contributors.  #
+dnl # Copyright (C) 2012, Joachim Pileborg and individual contributors.  #
 dnl # All rights reserved.                                               #
 dnl #                                                                    #
 dnl # Redistribution and use in source and binary forms, with or without #
@@ -14,9 +14,10 @@ dnl #   o Redistributions in binary form must reproduce the above        #
 dnl #     copyright notice, this list of conditions and the following    #
 dnl #     disclaimer in the documentation and/or other materials         #
 dnl #     provided with the distribution.                                #
-dnl #   o Neither the name of The Raven nor the names of its contributors#
-dnl #     may be used to endorse or promote products derived from this   #
-dnl #     software without specific prior written permission.            #
+dnl #   o Neither the name of Shadow World nor the names of its          #
+dnl #     contributors may be used to endorse or promote products        #
+dnl #     derived from this software without specific prior written      # 
+dnl #     permission.                                                    #
 dnl #                                                                    #
 dnl # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             #
 dnl # CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,        #
