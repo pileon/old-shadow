@@ -7,5 +7,6 @@ configure
 install-sh
 missing
 libtool
+scripts/ltmain.sh
 src/host/autoconf.*
 src/host/stamp-h1
