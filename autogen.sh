@@ -44,10 +44,10 @@ automake --foreign --add-missing
 if [ "$1" = "debug" ]; then
 	echo "Running './configure' with parameters:"
 	echo "    --with-gcc=4.7"
-	echo "    --enable-debug"
+	echo "    --enable-gdb3"
 	echo "    --enable-warnings"
 	echo "    --disable-opt"
-	./configure --with-gcc=4.7 --enable-debug --enable-warnings --disable-opt
+	./configure --with-gcc=4.7 --enable-gdb3 --enable-warnings --disable-opt
 else
 	echo "Running './configure' without parameters"
 	./configure
