@@ -79,6 +79,11 @@ dnl # Checks for header files
 dnl ######################################################################
 dnl # Checks for types
 
+AC_TYPE_MBSTATE_T
+AC_TYPE_SIZE_T
+AC_TYPE_SSIZE_T
+AC_TYPE_SIGNAL
+
 dnl ######################################################################
 dnl # Checks for structures
 
