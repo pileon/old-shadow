@@ -47,7 +47,10 @@ if [ "$1" = "debug" ]; then
 	echo "    --enable-gdb3"
 	echo "    --enable-warnings"
 	echo "    --disable-opt"
-	./configure --with-gcc=4.7 --enable-gdb3 --enable-warnings --disable-opt
+	echo "    --with-mtrace"
+	echo "    --with-debug"
+	echo "    --with-trace"
+	./configure --with-gcc=4.7 --enable-gdb3 --enable-warnings --disable-opt --with-mtrace --with-debug --with-trace
 else
 	echo "Running './configure' without parameters"
 	./configure
