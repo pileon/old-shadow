@@ -87,6 +87,11 @@ AC_TYPE_SIGNAL
 dnl ######################################################################
 dnl # Checks for structures
 
+AC_CHECK_MEMBER([struct stat.st_blksize],
+    [AC_DEFINE(HAVE_STRUCT_STAT_ST_BLKSIZE, 1,
+        [Define to 1 if struct stat have a member st_blksize.])],
+    [], [[#include <sys/stat.h>]])
+
 dnl ######################################################################
 dnl # Checks for compiler characteristics
 
