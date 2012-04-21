@@ -8,5 +8,8 @@ install-sh
 missing
 libtool
 scripts/ltmain.sh
+scripts/depcomp
 src/host/autoconf.*
 src/host/stamp-h1
+src/host/posix/.dirstamp
+.deps/

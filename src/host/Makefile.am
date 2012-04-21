@@ -56,18 +56,18 @@ libhost_a_SOURCES += posix/signal.cpp
 
 .PHONY: get-files
 get-files:
-        @echo $(SOURCES:%=host/%) $(HEADERS:%=host/%)
+	@echo $(SOURCES:%=host/%) $(HEADERS:%=host/%)
 
 .PHONY: count
 count:
-        wc $(HEADERS) $(SOURCES) | sort -g
+	wc $(HEADERS) $(SOURCES) | sort -g
 
 .PHONY: count16k
 count16k:
-        $(top_builddir)/scripts/16k.py -c -b -l -s $(HEADERS) $(SOURCES) | wc
+	$(top_builddir)/scripts/16k.py -c -b -l -s $(HEADERS) $(SOURCES) | wc
 
 .PHONY: sloccount
 sloccount:
-        sloccount -- .
+	sloccount -- .
 
 ######################################################################
