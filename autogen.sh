@@ -36,7 +36,8 @@
 #                                                                    #
 ######################################################################
 
-aclocal
+libtoolize
+aclocal -I scripts
 autoheader
 autoconf
 automake --foreign --add-missing
