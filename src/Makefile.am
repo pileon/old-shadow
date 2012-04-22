@@ -56,9 +56,9 @@ LIBS       += host/libhost.a
 
 noinst_PROGRAMS = shadow
 
-noinst_HEADERS  = shadow.h
+noinst_HEADERS  = shadow.h logging.h
 
-shadow_SOURCES  = host/posix/main.cpp shadow.cpp
+shadow_SOURCES  = host/posix/main.cpp shadow.cpp logging.cpp
 
 shadow_LDADD    = $(LIBOBJS)
 
