@@ -277,10 +277,6 @@ BOOST_LOG
 
 dnl ######################################################################
 
-dnl ######################################################################
-
-dnl ######################################################################
-
 AC_ARG_WITH(debug,
   [  --with-debug            #define DEBUG 1],
   [if test "$withval" = yes; then
@@ -292,8 +288,6 @@ AC_ARG_WITH(trace,
   [if test "$withval" = yes; then
      AC_DEFINE(DO_TRACE, 1, [Define to 1 to enable call tracing])
    fi])
-
-# TODO: autoheader templates?
 
 AH_TOP([/* -*- mode: c++; coding: utf-8 -*- */
 #ifndef __HOST_AUTOCONF_H__
