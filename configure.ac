@@ -295,8 +295,7 @@ AC_ARG_WITH(trace,
 
 # TODO: autoheader templates?
 
-AH_TOP([/* -*- C++ -*- */
-/* -*- coding: utf-8 -*- */
+AH_TOP([/* -*- mode: c++; coding: utf-8 -*- */
 #ifndef __HOST_AUTOCONF_H__
 #define __HOST_AUTOCONF_H__ 1
 /* *******************************************************************
