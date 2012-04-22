@@ -38,6 +38,16 @@
 
 #include "shadow.h"
 
+#include <boost/log/core.hpp>
+#include <boost/log/filters.hpp>
+#include <boost/log/sinks.hpp>
+#include <boost/log/formatters.hpp>
+#include <boost/log/utility/init/common_attributes.hpp>
+#include <boost/log/utility/empty_deleter.hpp>
+#include <boost/log/utility/init/to_console.hpp>
+
+namespace logger = boost::log;
+
 namespace shadow {
 namespace logging {
 
@@ -45,6 +55,31 @@ namespace logging {
 
 bool init()
 {
+	logger::add_common_attributes();
+
+	auto core = logger::core::get();
+
+#ifndef DEBUG
+	// In release mode, we don't need debug/trace level logging
+	core->set_filter(
+		logger::filter::attr<logger::trivial::severity_level>("Severity") >= logger::trivial::info
+    );
+#endif
+
+	// TODO: Option to log to file
+	auto sink = logger::init_log_to_console();
+
+	// TODO: Setup formating
+	sink->set_formatter
+	(
+		logger::formatters::stream
+			<< logger::formatters::date_time("TimeStamp", "%Y-%m-%d %H:%M:%S") << " :: "
+			<< logger::formatters::attr<logger::trivial::severity_level>("Severity") << " :: "
+			<< logger::formatters::message()
+	);
+
+	core->add_sink(sink);
+
 	return true;
 }
 

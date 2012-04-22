@@ -46,7 +46,10 @@ namespace
 {
 	bool init(int argc, char *argv[])
 	{
-		logging::init();
+		if (!logging::init())
+			return false;
+
+		return true;
 	}
 
 	void clean()
@@ -63,8 +66,11 @@ int main(int argc, char *argv[])
 		return 1;
 
 	std::cout << "Hello world\n";
+	LOG(debug, "Testing" << 1 << 2  << 3 << "...");
 
 	clean();
+
+	return 0;
 }
 
 void exit()

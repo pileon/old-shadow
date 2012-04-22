@@ -38,6 +38,10 @@
 *                                                                    *
 ******************************************************************* */
 
+#include <boost/log/trivial.hpp>
+
+#define LOG(level, message) BOOST_LOG_TRIVIAL(level) << message
+
 namespace shadow {
 namespace logging {
 
