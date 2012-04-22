@@ -1,8 +1,8 @@
 /* -*- mode: c++; coding: utf-8 -*- */
-#ifndef __SYSDEPS_H__
-#define __SYSDEPS_H__ 1
+#ifndef __HOST_SYSDEPS_H__
+#define __HOST_SYSDEPS_H__ 1
 /* *******************************************************************
-* File: sysdeps.h                               Part of Shadow World *
+* File: host/sysdeps.h                          Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -131,4 +131,4 @@ private:
 
 /* **************************************************************** */
 
-#endif /* __SYSDEPS_H__ */
+#endif /* __HOST_SYSDEPS_H__ */
