@@ -42,9 +42,29 @@ namespace shadow {
 
 /* **************************************************************** */
 
+namespace
+{
+	bool init(int argc, char *argv[])
+	{
+		logging::init();
+	}
+
+	void clean()
+	{
+		logging::clean();
+	}
+}
+
+/* **************************************************************** */
+
 int main(int argc, char *argv[])
 {
+	if (!init(argc, argv))
+		return 1;
+
 	std::cout << "Hello world\n";
+
+	clean();
 }
 
 void exit()
