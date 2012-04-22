@@ -16,7 +16,7 @@
 		{
 			"path": "/home/arrow/Projects/MUD/shadow/src",
 			"folder_exclude_patterns": [
-				".deps"
+				".deps", ".libs"
 				],
 			"file_exclude_patterns": [
 				"Makefile", "Makefile.in",
