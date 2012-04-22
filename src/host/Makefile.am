@@ -39,7 +39,7 @@ AUTOMAKE_OPTIONS = subdir-objects foreign
 
 SUBDIRS    =
 
-AM_CXXFLAGS = -I$(top_srcdir) -I..
+AM_CXXFLAGS = -I$(top_srcdir) -I.. $(BOOST_CPPFLAGS)
 
 ######################################################################
 

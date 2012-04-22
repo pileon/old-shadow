@@ -16,3 +16,8 @@ src/host/posix/.dirstamp
 src/host/libhost.a
 *.o
 src/shadow
+scripts/libtool.m4
+scripts/ltoptions.m4
+scripts/ltsugar.m4
+scripts/ltversion.m4
+scripts/lt~obsolete.m4

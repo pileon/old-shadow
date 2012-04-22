@@ -1,8 +1,8 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+#ifndef __LOGGING_H__
+#define __LOGGING_H__ 1
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: logging.h                               Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,24 +38,21 @@
 *                                                                    *
 ******************************************************************* */
 
-#if HAVE_CONFIG_H
-# include "host/autoconf.h"
-#endif
-#include "host/sysdeps.h"
-#include "logging.h"
+#include <boost/log/trivial.hpp>
 
-#include <iostream>
-#include <string>
+#define LOG(level, message) BOOST_LOG_TRIVIAL(level) << message
 
 namespace shadow {
+namespace logging {
 
 /* **************************************************************** */
 
-int main(int argc, char *argv[]);
-void exit();
+bool init();
+void clean();
 
 /* **************************************************************** */
 
+} // namespace logging
 } // namespace shadow
 
-#endif // __SHADOW_H__
+#endif // __LOGGING_H__

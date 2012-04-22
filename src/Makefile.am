@@ -39,15 +39,30 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 SUBDIRS = host
 
-LIBS += host/libhost.a
+LDFLAGS_BOOST = \
+	$(BOOST_SYSTEM_LDFLAGS) \
+	$(BOOST_THREAD_LDFLAGS) \
+	$(BOOST_LOG_LDFLAGS) \
+	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+
+LIBS_BOOST = \
+	$(BOOST_SYSTEM_LIBS) \
+	$(BOOST_THREAD_LIBS) \
+	$(BOOST_LOG_LIBS) \
+	$(BOOST_PROGRAM_OPTIONS_LIBS)
+
+AM_CPPFLAGS = $(BOOST_CPPFLAGS)
+AM_LDFLAGS  = $(LDFLAGS_BOOST)
+LIBS       += $(LIBS_BOOST)
+LIBS       += host/libhost.a
 
 ######################################################################
 
 noinst_PROGRAMS = shadow
 
-noinst_HEADERS  = shadow.h
+noinst_HEADERS  = shadow.h logging.h
 
-shadow_SOURCES  = host/posix/main.cpp shadow.cpp
+shadow_SOURCES  = host/posix/main.cpp shadow.cpp logging.cpp
 
 shadow_LDADD    = $(LIBOBJS)
 

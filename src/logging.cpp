@@ -1,8 +1,6 @@
-// -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+// -*- coding: utf-8 -*-
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: logging.cpp                             Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -19,7 +17,7 @@
 *     provided with the distribution.                                *
 *   o Neither the name of Shadow World nor the names of its          *
 *     contributors may be used to endorse or promote products        *
-*     derived from this software without specific prior written      *
+*     derived from this software without specific prior written      * 
 *     permission.                                                    *
 *                                                                    *
 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             *
@@ -38,24 +36,58 @@
 *                                                                    *
 ******************************************************************* */
 
-#if HAVE_CONFIG_H
-# include "host/autoconf.h"
-#endif
-#include "host/sysdeps.h"
-#include "logging.h"
+#include "shadow.h"
 
-#include <iostream>
-#include <string>
+#include <boost/log/core.hpp>
+#include <boost/log/filters.hpp>
+#include <boost/log/sinks.hpp>
+#include <boost/log/formatters.hpp>
+#include <boost/log/utility/init/common_attributes.hpp>
+#include <boost/log/utility/empty_deleter.hpp>
+#include <boost/log/utility/init/to_console.hpp>
+
+namespace logger = boost::log;
 
 namespace shadow {
+namespace logging {
 
 /* **************************************************************** */
 
-int main(int argc, char *argv[]);
-void exit();
+bool init()
+{
+	logger::add_common_attributes();
+
+	auto core = logger::core::get();
+
+#ifndef DEBUG
+	// In release mode, we don't need debug/trace level logging
+	core->set_filter(
+		logger::filter::attr<logger::trivial::severity_level>("Severity") >= logger::trivial::info
+    );
+#endif
+
+	// TODO: Option to log to file
+	auto sink = logger::init_log_to_console();
+
+	// TODO: Setup formating
+	sink->set_formatter
+	(
+		logger::formatters::stream
+			<< logger::formatters::date_time("TimeStamp", "%Y-%m-%d %H:%M:%S") << " :: "
+			<< logger::formatters::attr<logger::trivial::severity_level>("Severity") << " :: "
+			<< logger::formatters::message()
+	);
+
+	core->add_sink(sink);
+
+	return true;
+}
+
+void clean()
+{
+}
 
 /* **************************************************************** */
 
+} // namespace logging
 } // namespace shadow
-
-#endif // __SHADOW_H__

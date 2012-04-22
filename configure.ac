@@ -269,9 +269,13 @@ AC_ARG_WITH(mtrace,
 
 dnl ######################################################################
 
-dnl ######################################################################
+BOOST_REQUIRE([1.48.0],
+        [AC_MSG_ERROR([The Raven requires Boost version 1.48.0 or higher.])])
 
-dnl ######################################################################
+BOOST_SYSTEM
+BOOST_THREADS
+BOOST_PROGRAM_OPTIONS
+BOOST_LOG
 
 dnl ######################################################################
 
@@ -287,10 +291,7 @@ AC_ARG_WITH(trace,
      AC_DEFINE(DO_TRACE, 1, [Define to 1 to enable call tracing])
    fi])
 
-# TODO: autoheader templates?
-
-AH_TOP([/* -*- C++ -*- */
-/* -*- coding: utf-8 -*- */
+AH_TOP([/* -*- mode: c++; coding: utf-8 -*- */
 #ifndef __HOST_AUTOCONF_H__
 #define __HOST_AUTOCONF_H__ 1
 /* *******************************************************************
