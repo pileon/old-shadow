@@ -59,5 +59,9 @@ void clean()
 
 /* **************************************************************** */
 
+boost::property_tree::ptree config_private::properties;
+
+/* **************************************************************** */
+
 } // namespace config
 } // namespace shadow
