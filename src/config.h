@@ -38,6 +38,8 @@
 *                                                                    *
 ******************************************************************* */
 
+#include <boost/property_tree/ptree.hpp>
+
 namespace shadow {
 namespace config {
 
@@ -45,6 +47,13 @@ namespace config {
 
 bool init(int argc, char *argv[]);
 void clean();
+
+/* **************************************************************** */
+
+namespace config_private
+{
+	extern boost::property_tree::ptree properties;
+}
 
 /* **************************************************************** */
 
