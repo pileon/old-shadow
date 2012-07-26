@@ -47,6 +47,8 @@ namespace defaults
 {
 	// This function is used to set default values for the runtime
 	// configuration.
+	//
+	// It should be the only code in this file that might need modifications.
 	void set()
 	{
 		using config::set;
@@ -62,11 +64,21 @@ namespace defaults
 
 /* **************************************************************** */
 
+// Helper functions
+namespace
+{
+	void get_config_file_name(int argc, char *argv[])
+	{
+	}
+}
+
+/* **************************************************************** */
+
 bool init(int argc, char *argv[])
 {
 	defaults::set();
+	get_config_file_name(argc, argv);
 
-	// TODO: Get configuration file name (if any)
 	// TODO: Read configuration file
 	// TODO: Parse command line arguments
 
