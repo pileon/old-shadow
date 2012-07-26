@@ -57,6 +57,18 @@ namespace config_private
 
 /* **************************************************************** */
 
+template<typename T>
+inline T get(const std::string &name)
+{
+	return config_private::properties.get<T>(name);
+}
+
+template<typename T>
+inline void set(const std::string &name, const T &value)
+{
+	config_private::properties.put(name, value);
+}
+
 } // namespace config
 } // namespace shadow
 
