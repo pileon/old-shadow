@@ -43,9 +43,27 @@ namespace config {
 
 /* **************************************************************** */
 
+namespace defaults
+{
+	// This function is used to set default values for the runtime
+	// configuration.
+	void set()
+	{
+		// Network parameters
+		set("net.telnet.enable", true);
+		set("net.telnet.port"  , 5555);
+
+		// TODO: Database configuration
+		// TODO: Other configuration values
+	}
+}
+
+/* **************************************************************** */
+
 bool init(int argc, char *argv[])
 {
-	// TODO: Set default configuration values
+	defaults::set();
+
 	// TODO: Get configuration file name (if any)
 	// TODO: Read configuration file
 	// TODO: Parse command line arguments
