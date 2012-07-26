@@ -37,6 +37,7 @@
 ******************************************************************* */
 
 #include "shadow.h"
+#include <boost/program_options.hpp>
 
 namespace shadow {
 namespace config {
@@ -47,8 +48,6 @@ namespace defaults
 {
 	// This function is used to set default values for the runtime
 	// configuration.
-	//
-	// It should be the only code in this file that might need modifications.
 	void set()
 	{
 		using config::set;
@@ -59,6 +58,14 @@ namespace defaults
 
 		// TODO: Database configuration
 		// TODO: Other configuration values
+	}
+
+	void arguments(boost::program_options::options_description &args)
+	{
+		args.add_options()
+			("help", "show this help message and exit")
+			("version", "show version information and exit")
+			;
 	}
 }
 
@@ -76,10 +83,15 @@ namespace
 
 bool init(int argc, char *argv[])
 {
+	boost::program_options::options_description args("Allowed options:\n");
+
 	defaults::set();
+	defaults::arguments(args);
+
 	get_config_file_name(argc, argv);
 
 	// TODO: Read configuration file
+
 	// TODO: Parse command line arguments
 
 	return true;
