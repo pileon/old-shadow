@@ -45,6 +45,11 @@ namespace config {
 
 bool init(int argc, char *argv[])
 {
+	// TODO: Set default configuration values
+	// TODO: Get configuration file name (if any)
+	// TODO: Read configuration file
+	// TODO: Parse command line arguments
+
 	return true;
 }
 
