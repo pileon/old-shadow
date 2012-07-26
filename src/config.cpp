@@ -74,9 +74,6 @@ namespace defaults
 // Helper functions
 namespace
 {
-	void get_config_file_name(int argc, char *argv[])
-	{
-	}
 }
 
 /* **************************************************************** */
@@ -94,11 +91,7 @@ bool init(int argc, char *argv[])
 	po::store(po::parse_command_line(argc, argv, args), options);
 	po::notify(options);
 
-	get_config_file_name(argc, argv);
-
 	// TODO: Read configuration file
-
-	// TODO: Parse command line arguments
 
 	return true;
 }
