@@ -82,7 +82,7 @@ bool init(int argc, char *argv[])
 {
 	namespace po = boost::program_options;
 
-	po::options_description args("Allowed options:\n");
+	po::options_description args("Allowed options");
 
 	defaults::set();
 	defaults::arguments(args);
@@ -90,6 +90,18 @@ bool init(int argc, char *argv[])
 	po::variables_map options;
 	po::store(po::parse_command_line(argc, argv, args), options);
 	po::notify(options);
+
+	if (options.count("help"))
+	{
+		std::cout << args;
+		return false;
+	}
+
+	if (options.count("version"))
+	{
+		std::cout << "Shadow World version 0\n";
+		return false;
+	}
 
 	// TODO: Read configuration file
 
