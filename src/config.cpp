@@ -83,10 +83,16 @@ namespace
 
 bool init(int argc, char *argv[])
 {
-	boost::program_options::options_description args("Allowed options:\n");
+	namespace po = boost::program_options;
+
+	po::options_description args("Allowed options:\n");
 
 	defaults::set();
 	defaults::arguments(args);
+
+	po::variables_map options;
+	po::store(po::parse_command_line(argc, argv, args), options);
+	po::notify(options);
 
 	get_config_file_name(argc, argv);
 
