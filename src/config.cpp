@@ -39,6 +39,9 @@
 #include "shadow.h"
 #include <boost/program_options.hpp>
 
+namespace po = boost::program_options;
+namespace pt = boost::property_tree;
+
 namespace shadow {
 namespace config {
 
@@ -65,6 +68,8 @@ namespace defaults
 		args.add_options()
 			("help", "show this help message and exit")
 			("version", "show version information and exit")
+
+			// Add more command line parameters here
 			;
 	}
 }
@@ -80,8 +85,6 @@ namespace
 
 bool init(int argc, char *argv[])
 {
-	namespace po = boost::program_options;
-
 	po::options_description args("Allowed options");
 
 	defaults::set();
@@ -104,6 +107,8 @@ bool init(int argc, char *argv[])
 	}
 
 	// TODO: Read configuration file
+
+	// TODO: Set configuration values depending on command line arguments
 
 	return true;
 }
