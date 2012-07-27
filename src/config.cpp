@@ -69,6 +69,9 @@ namespace defaults
 			("help", "show this help message and exit")
 			("version", "show version information and exit")
 
+			// Network options
+			("telnet-port,t", "telnet network port")
+
 			// Add more command line parameters here
 			;
 	}
