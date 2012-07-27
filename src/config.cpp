@@ -63,17 +63,9 @@ namespace defaults
 		// TODO: Other configuration values
 	}
 
-	void add_arguments(boost::program_options::options_description &args)
+	void add_arguments(po::options_description &args)
 	{
 		args.add_options()
-			("help,h", "show this help message and exit")
-			("version,v", "show version information and exit")
-
-			// Network options
-			("telnet-port,t",
-				po::value<int>()->default_value(get<int>("net.telnet.port")),
-				"telnet network port")
-
 			// Add more command line parameters here
 			;
 	}
@@ -84,17 +76,36 @@ namespace defaults
 }
 
 /* **************************************************************** */
+/* The code below this line should not need to be modified.         */
+/* Please leave it alone.                                           */
+/* **************************************************************** */
 
 // Helper functions
 namespace
 {
+	void add_argument_options(po::options_description &args)
+	{
+		args.add_options()
+			("help,h", "show this help message and exit")
+			("version,v", "show version information and exit")
+
+			// Network options
+			("telnet-port,t",
+				po::value<int>()->default_value(get<int>("net.telnet.port")),
+				"telnet network port")
+			;
+
+		// Add locally added arguments
+		defaults::add_arguments(args);
+	}
+
 	void set_argument_options(const po::variables_map &options)
 	{
-		// Set locally added arguments
-		defaults::set_arguments(options);
-
 		if (options.count("telnet-port"))
 			set("net.telnet.port", options["telnet-port"].as<int>());
+
+		// Set locally added arguments
+		defaults::set_arguments(options);
 	}
 }
 
@@ -105,7 +116,8 @@ bool init(int argc, char *argv[])
 	po::options_description args("Allowed options");
 
 	defaults::set();
-	defaults::add_arguments(args);
+
+	add_argument_options(args);
 
 	po::variables_map options;
 	po::store(po::parse_command_line(argc, argv, args), options);
