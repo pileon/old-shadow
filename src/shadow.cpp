@@ -46,6 +46,9 @@ namespace
 {
 	bool init(int argc, char *argv[])
 	{
+		if (!config::init(argc, argv))
+			return false;
+
 		if (!logging::init())
 			return false;
 
@@ -55,6 +58,8 @@ namespace
 	void clean()
 	{
 		logging::clean();
+
+		config::clean();
 	}
 }
 

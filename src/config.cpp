@@ -1,8 +1,6 @@
-// -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+// -*- coding: utf-8 -*-
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: config.cpp                              Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -19,7 +17,7 @@
 *     provided with the distribution.                                *
 *   o Neither the name of Shadow World nor the names of its          *
 *     contributors may be used to endorse or promote products        *
-*     derived from this software without specific prior written      *
+*     derived from this software without specific prior written      * 
 *     permission.                                                    *
 *                                                                    *
 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND             *
@@ -38,25 +36,121 @@
 *                                                                    *
 ******************************************************************* */
 
-#if HAVE_CONFIG_H
-# include "host/autoconf.h"
-#endif
-#include "host/sysdeps.h"
-#include "logging.h"
-#include "config.h"
+#include "shadow.h"
+#include <boost/program_options.hpp>
 
-#include <iostream>
-#include <string>
+namespace po = boost::program_options;
+namespace pt = boost::property_tree;
 
 namespace shadow {
+namespace config {
 
 /* **************************************************************** */
 
-int main(int argc, char *argv[]);
-void exit();
+namespace defaults
+{
+	// This function is used to set default values for the runtime
+	// configuration.
+	void set()
+	{
+		using config::set;
+
+		// Network parameters
+		set("net.telnet.enable", true);
+		set("net.telnet.port"  , 5555);
+
+		// TODO: Database configuration
+		// TODO: Other configuration values
+	}
+
+	void add_arguments(po::options_description &args)
+	{
+		args.add_options()
+			// Add more command line parameters here
+			;
+	}
+
+	void set_arguments(const po::variables_map &options)
+	{
+	}
+}
+
+/* **************************************************************** */
+/* The code below this line should not need to be modified.         */
+/* Please leave it alone.                                           */
+/* **************************************************************** */
+
+// Helper functions
+namespace
+{
+	void add_argument_options(po::options_description &args)
+	{
+		args.add_options()
+			("help,h", "show this help message and exit")
+			("version,v", "show version information and exit")
+
+			// Network options
+			("telnet-port,t",
+				po::value<int>()->default_value(get<int>("net.telnet.port")),
+				"telnet network port")
+			;
+
+		// Add locally added arguments
+		defaults::add_arguments(args);
+	}
+
+	void set_argument_options(const po::variables_map &options)
+	{
+		if (options.count("telnet-port"))
+			set("net.telnet.port", options["telnet-port"].as<int>());
+
+		// Set locally added arguments
+		defaults::set_arguments(options);
+	}
+}
 
 /* **************************************************************** */
 
+bool init(int argc, char *argv[])
+{
+	po::options_description args("Allowed options");
+
+	defaults::set();
+
+	add_argument_options(args);
+
+	po::variables_map options;
+	po::store(po::parse_command_line(argc, argv, args), options);
+	po::notify(options);
+
+	if (options.count("help"))
+	{
+		std::cout << args;
+		return false;
+	}
+
+	if (options.count("version"))
+	{
+		std::cout << "Shadow World version 0\n";
+		return false;
+	}
+
+	// TODO: Read configuration file
+
+	set_argument_options(options);
+
+	return true;
+}
+
+void clean()
+{
+}
+
+/* **************************************************************** */
+
+boost::property_tree::ptree config_private::properties;
+
+/* **************************************************************** */
+
+} // namespace config
 } // namespace shadow
-
-#endif // __SHADOW_H__

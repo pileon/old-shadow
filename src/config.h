@@ -1,8 +1,8 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+#ifndef __CONFIG_H__
+#define __CONFIG_H__ 1
 /* *******************************************************************
-* File: shadow.h                                Part of Shadow World *
+* File: config.h                                Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,25 +38,38 @@
 *                                                                    *
 ******************************************************************* */
 
-#if HAVE_CONFIG_H
-# include "host/autoconf.h"
-#endif
-#include "host/sysdeps.h"
-#include "logging.h"
-#include "config.h"
-
-#include <iostream>
-#include <string>
+#include <boost/property_tree/ptree.hpp>
 
 namespace shadow {
+namespace config {
 
 /* **************************************************************** */
 
-int main(int argc, char *argv[]);
-void exit();
+bool init(int argc, char *argv[]);
+void clean();
 
 /* **************************************************************** */
 
+namespace config_private
+{
+	extern boost::property_tree::ptree properties;
+}
+
+/* **************************************************************** */
+
+template<typename T>
+inline T get(const std::string &name)
+{
+	return config_private::properties.get<T>(name);
+}
+
+template<typename T>
+inline void set(const std::string &name, const T &value)
+{
+	config_private::properties.put(name, value);
+}
+
+} // namespace config
 } // namespace shadow
 
-#endif // __SHADOW_H__
+#endif // __CONFIG_H__
