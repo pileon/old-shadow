@@ -66,8 +66,8 @@ namespace defaults
 	void add_arguments(boost::program_options::options_description &args)
 	{
 		args.add_options()
-			("help", "show this help message and exit")
-			("version", "show version information and exit")
+			("help,h", "show this help message and exit")
+			("version,v", "show version information and exit")
 
 			// Network options
 			("telnet-port,t", "telnet network port")
