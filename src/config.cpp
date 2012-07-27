@@ -70,7 +70,9 @@ namespace defaults
 			("version,v", "show version information and exit")
 
 			// Network options
-			("telnet-port,t", "telnet network port")
+			("telnet-port,t",
+				po::value<int>()->default_value(get<int>("net.telnet.port")),
+				"telnet network port")
 
 			// Add more command line parameters here
 			;
