@@ -63,7 +63,7 @@ namespace defaults
 		// TODO: Other configuration values
 	}
 
-	void arguments(boost::program_options::options_description &args)
+	void add_arguments(boost::program_options::options_description &args)
 	{
 		args.add_options()
 			("help", "show this help message and exit")
@@ -72,6 +72,10 @@ namespace defaults
 			// Add more command line parameters here
 			;
 	}
+
+	void set_arguments(const po::variables_map &options)
+	{
+	}
 }
 
 /* **************************************************************** */
@@ -79,6 +83,14 @@ namespace defaults
 // Helper functions
 namespace
 {
+	void set_argument_options(const po::variables_map &options)
+	{
+		// Set locally added arguments
+		defaults::set_arguments(options);
+
+		if (options.count("telnet-port"))
+			set("net.telnet.port", options["telnet-port"].as<int>());
+	}
 }
 
 /* **************************************************************** */
@@ -88,7 +100,7 @@ bool init(int argc, char *argv[])
 	po::options_description args("Allowed options");
 
 	defaults::set();
-	defaults::arguments(args);
+	defaults::add_arguments(args);
 
 	po::variables_map options;
 	po::store(po::parse_command_line(argc, argv, args), options);
@@ -108,7 +120,7 @@ bool init(int argc, char *argv[])
 
 	// TODO: Read configuration file
 
-	// TODO: Set configuration values depending on command line arguments
+	set_argument_options(options);
 
 	return true;
 }
