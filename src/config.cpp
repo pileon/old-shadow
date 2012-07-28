@@ -53,11 +53,9 @@ namespace defaults
 	// configuration.
 	void set()
 	{
-		using config::set;
-
 		// Network parameters
-		set("net.telnet.enable", true);
-		set("net.telnet.port"  , 5555);
+		config::set("net.telnet.enable", true);
+		config::set("net.telnet.port"  , 5555);
 
 		// TODO: Database configuration
 		// TODO: Other configuration values
