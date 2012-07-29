@@ -64,12 +64,22 @@ namespace defaults
 	void add_arguments(po::options_description &args)
 	{
 		args.add_options()
+			("help,h", "show this help message and exit")
+			("version,v", "show version information and exit")
+
+			// Network options
+			("telnet-port,t",
+				po::value<int>()->default_value(get<int>("net.telnet.port")),
+				"telnet network port")
+
 			// Add more command line parameters here
 			;
 	}
 
 	void set_arguments(const po::variables_map &options)
 	{
+		if (options.count("telnet-port"))
+			config::set("net.telnet.port", options["telnet-port"].as<int>());
 	}
 }
 
@@ -81,30 +91,6 @@ namespace defaults
 // Helper functions
 namespace
 {
-	void add_argument_options(po::options_description &args)
-	{
-		args.add_options()
-			("help,h", "show this help message and exit")
-			("version,v", "show version information and exit")
-
-			// Network options
-			("telnet-port,t",
-				po::value<int>()->default_value(get<int>("net.telnet.port")),
-				"telnet network port")
-			;
-
-		// Add locally added arguments
-		defaults::add_arguments(args);
-	}
-
-	void set_argument_options(const po::variables_map &options)
-	{
-		if (options.count("telnet-port"))
-			set("net.telnet.port", options["telnet-port"].as<int>());
-
-		// Set locally added arguments
-		defaults::set_arguments(options);
-	}
 }
 
 /* **************************************************************** */
@@ -115,7 +101,7 @@ bool init(int argc, char *argv[])
 
 	defaults::set();
 
-	add_argument_options(args);
+	defaults::add_arguments(args);
 
 	po::variables_map options;
 	po::store(po::parse_command_line(argc, argv, args), options);
@@ -135,7 +121,7 @@ bool init(int argc, char *argv[])
 
 	// TODO: Read configuration file
 
-	set_argument_options(options);
+	defaults::set_arguments(options);
 
 	return true;
 }
@@ -146,7 +132,7 @@ void clean()
 
 /* **************************************************************** */
 
-boost::property_tree::ptree config_private::properties;
+pt::ptree config_private::properties;
 
 /* **************************************************************** */
 
