@@ -273,9 +273,9 @@ BOOST_REQUIRE([1.48.0],
         [AC_MSG_ERROR([The Raven requires Boost version 1.48.0 or higher.])])
 
 BOOST_SYSTEM
-BOOST_THREADS
 BOOST_PROGRAM_OPTIONS
 BOOST_LOG
+BOOST_THREADS
 
 dnl ######################################################################
 
