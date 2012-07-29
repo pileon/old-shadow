@@ -52,6 +52,14 @@ namespace
 		if (!logging::init())
 			return false;
 
+		if (config::exists("config.path"))
+		{
+			LOG(info, "Configuration file loaded from "
+			    << config::get<std::string>("config.path"));
+		}
+		else
+			LOG(info, "No configuration file loaded");
+
 		return true;
 	}
 
