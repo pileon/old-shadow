@@ -69,6 +69,12 @@ inline void set(const std::string &name, const T &value)
 	config_private::properties.put(name, value);
 }
 
+inline bool exists(const std::string &name)
+{
+	return (config_private::properties.find(name) !=
+			config_private::properties.not_found());
+}
+
 } // namespace config
 } // namespace shadow
 

@@ -38,6 +38,8 @@
 
 #include "shadow.h"
 #include <boost/program_options.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/property_tree/info_parser.hpp>
 
 namespace po = boost::program_options;
 namespace pt = boost::property_tree;
@@ -53,11 +55,9 @@ namespace defaults
 	// configuration.
 	void set()
 	{
-		using config::set;
-
 		// Network parameters
-		set("net.telnet.enable", true);
-		set("net.telnet.port"  , 5555);
+		config::set("net.telnet.enable", true);
+		config::set("net.telnet.port"  , 5555);
 
 		// TODO: Database configuration
 		// TODO: Other configuration values
@@ -66,12 +66,23 @@ namespace defaults
 	void add_arguments(po::options_description &args)
 	{
 		args.add_options()
+			("help,h", "show this help message and exit")
+			("version,v", "show version information and exit")
+			("config,c", po::value<std::string>(), "path to configuration file")
+
+			// Network options
+			("telnet-port,t",
+				po::value<int>()->default_value(get<int>("net.telnet.port")),
+				"telnet network port")
+
 			// Add more command line parameters here
 			;
 	}
 
 	void set_arguments(const po::variables_map &options)
 	{
+		if (options.count("telnet-port"))
+			config::set("net.telnet.port", options["telnet-port"].as<int>());
 	}
 }
 
@@ -83,29 +94,48 @@ namespace defaults
 // Helper functions
 namespace
 {
-	void add_argument_options(po::options_description &args)
+	bool fetch_config_file_path(const std::string &argv0,
+		const po::variables_map &options)
 	{
-		args.add_options()
-			("help,h", "show this help message and exit")
-			("version,v", "show version information and exit")
+		namespace fs = boost::filesystem;
 
-			// Network options
-			("telnet-port,t",
-				po::value<int>()->default_value(get<int>("net.telnet.port")),
-				"telnet network port")
-			;
+		fs::path file;
 
-		// Add locally added arguments
-		defaults::add_arguments(args);
+		// Configuration file specified on the command line?
+		if (options.count("config"))
+			file = options["config"].as<std::string>();
+
+		if (!fs::exists(file))
+			file = fs::path(argv0).replace_extension(".rc");
+
+		if (!fs::exists(file))
+			file = fs::path("shadow.rc");
+
+		if (!fs::exists(file))
+			file = fs::path(".shadowrc");
+
+		if (!fs::exists(file))
+			file = fs::path("~/.shadowrc");
+
+		if (!fs::exists(file))
+			file = fs::path("/etc/shadow.rc");
+
+		if (fs::exists(file))
+		{
+			config::set("config.path", file);
+			return true;
+		}
+		else
+			return false;
 	}
 
-	void set_argument_options(const po::variables_map &options)
+	void read_config_file()
 	{
-		if (options.count("telnet-port"))
-			set("net.telnet.port", options["telnet-port"].as<int>());
+		if (!config::exists("config.path"))
+			return;
 
-		// Set locally added arguments
-		defaults::set_arguments(options);
+		pt::info_parser::read_info(config::get<std::string>("config.path"),
+					  			   config_private::properties);
 	}
 }
 
@@ -117,7 +147,7 @@ bool init(int argc, char *argv[])
 
 	defaults::set();
 
-	add_argument_options(args);
+	defaults::add_arguments(args);
 
 	po::variables_map options;
 	po::store(po::parse_command_line(argc, argv, args), options);
@@ -135,9 +165,10 @@ bool init(int argc, char *argv[])
 		return false;
 	}
 
-	// TODO: Read configuration file
+	if (fetch_config_file_path(argv[0], options))
+		read_config_file();
 
-	set_argument_options(options);
+	defaults::set_arguments(options);
 
 	return true;
 }
@@ -148,7 +179,7 @@ void clean()
 
 /* **************************************************************** */
 
-boost::property_tree::ptree config_private::properties;
+pt::ptree config_private::properties;
 
 /* **************************************************************** */
 

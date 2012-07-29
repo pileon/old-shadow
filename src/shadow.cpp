@@ -52,6 +52,14 @@ namespace
 		if (!logging::init())
 			return false;
 
+		if (config::exists("config.path"))
+		{
+			LOG(info, "Configuration file loaded from "
+			    << config::get<std::string>("config.path"));
+		}
+		else
+			LOG(info, "No configuration file loaded");
+
 		return true;
 	}
 
@@ -69,9 +77,6 @@ int main(int argc, char *argv[])
 {
 	if (!init(argc, argv))
 		return 1;
-
-	std::cout << "Hello world\n";
-	LOG(debug, "Testing" << 1 << 2  << 3 << "...");
 
 	clean();
 
