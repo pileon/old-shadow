@@ -39,6 +39,7 @@
 #include "shadow.h"
 #include <boost/program_options.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/property_tree/info_parser.hpp>
 
 namespace po = boost::program_options;
 namespace pt = boost::property_tree;
@@ -93,11 +94,11 @@ namespace defaults
 // Helper functions
 namespace
 {
-	namespace fs = boost::filesystem;
-
 	bool fetch_config_file_path(const std::string &argv0,
 		const po::variables_map &options)
 	{
+		namespace fs = boost::filesystem;
+
 		fs::path file;
 
 		// Configuration file specified on the command line?
@@ -127,6 +128,15 @@ namespace
 		else
 			return false;
 	}
+
+	void read_config_file()
+	{
+		if (!config::exists("config.path"))
+			return;
+
+		pt::info_parser::read_info(config::get<std::string>("config.path"),
+					  			   config_private::properties);
+	}
 }
 
 /* **************************************************************** */
@@ -155,8 +165,8 @@ bool init(int argc, char *argv[])
 		return false;
 	}
 
-	// TODO: Read configuration file
-	fetch_config_file_path(argv[0], options);
+	if (fetch_config_file_path(argv[0], options))
+		read_config_file();
 
 	defaults::set_arguments(options);
 
