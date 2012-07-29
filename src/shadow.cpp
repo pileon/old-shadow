@@ -78,9 +78,6 @@ int main(int argc, char *argv[])
 	if (!init(argc, argv))
 		return 1;
 
-	std::cout << "Hello world\n";
-	LOG(debug, "Testing" << 1 << 2  << 3 << "...");
-
 	clean();
 
 	return 0;
