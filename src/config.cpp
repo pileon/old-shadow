@@ -38,6 +38,7 @@
 
 #include "shadow.h"
 #include <boost/program_options.hpp>
+#include <boost/filesystem.hpp>
 
 namespace po = boost::program_options;
 namespace pt = boost::property_tree;
@@ -66,6 +67,7 @@ namespace defaults
 		args.add_options()
 			("help,h", "show this help message and exit")
 			("version,v", "show version information and exit")
+			("config,c", po::value<std::string>(), "path to configuration file")
 
 			// Network options
 			("telnet-port,t",
@@ -91,6 +93,40 @@ namespace defaults
 // Helper functions
 namespace
 {
+	namespace fs = boost::filesystem;
+
+	bool fetch_config_file_path(const std::string &argv0,
+		const po::variables_map &options)
+	{
+		fs::path file;
+
+		// Configuration file specified on the command line?
+		if (options.count("config"))
+			file = options["config"].as<std::string>();
+
+		if (!fs::exists(file))
+			file = fs::path(argv0).replace_extension(".rc");
+
+		if (!fs::exists(file))
+			file = fs::path("shadow.rc");
+
+		if (!fs::exists(file))
+			file = fs::path(".shadowrc");
+
+		if (!fs::exists(file))
+			file = fs::path("~/.shadowrc");
+
+		if (!fs::exists(file))
+			file = fs::path("/etc/shadow.rc");
+
+		if (fs::exists(file))
+		{
+			config::set("config.path", file);
+			return true;
+		}
+		else
+			return false;
+	}
 }
 
 /* **************************************************************** */
@@ -120,6 +156,7 @@ bool init(int argc, char *argv[])
 	}
 
 	// TODO: Read configuration file
+	fetch_config_file_path(argv[0], options);
 
 	defaults::set_arguments(options);
 
