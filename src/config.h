@@ -71,7 +71,7 @@ inline void set(const std::string &name, const T &value)
 
 inline bool exists(const std::string &name)
 {
-	return (config_private::properties.find(name) ==
+	return (config_private::properties.find(name) !=
 			config_private::properties.not_found());
 }
 
