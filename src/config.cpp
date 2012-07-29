@@ -82,7 +82,10 @@ namespace defaults
 	void set_arguments(const po::variables_map &options)
 	{
 		if (options.count("telnet-port"))
+		{
 			config::set("net.telnet.port", options["telnet-port"].as<int>());
+			config::set("net.telnet.enable", true);
+		}
 	}
 }
 
