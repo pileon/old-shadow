@@ -277,6 +277,7 @@ BOOST_PROGRAM_OPTIONS
 BOOST_LOG
 BOOST_THREADS
 BOOST_FILESYSTEM
+BOOST_ASIO
 
 dnl ######################################################################
 
