@@ -39,18 +39,38 @@
 #include "shadow.h"
 #include "net.h"
 
+#include <boost/asio.hpp>
+#include <thread>
+
+namespace asio = boost::asio;
+
 namespace shadow {
 namespace net {
 
 /* **************************************************************** */
 
+namespace
+{
+	asio::io_service io_service_;
+	std::thread io_thread_;
+}
+
+/* **************************************************************** */
+
 bool init()
 {
+	// TODO: To not block the main thread we have to create a new thread
+	//       that will handle the ASIO event loop
+
+	io_thread_ = std::thread([]{ io_service_.run(); });
+
 	return true;
 }
 
 void clean()
 {
+	io_service_.stop();
+	io_thread_.join();
 }
 
 /* **************************************************************** */
