@@ -37,6 +37,7 @@
 ******************************************************************* */
 
 #include "shadow.h"
+#include "net/net.h"
 
 namespace shadow {
 
@@ -60,11 +61,16 @@ namespace
 		else
 			LOG(info, "No configuration file loaded");
 
+		if (!net::init())
+			return false;
+
 		return true;
 	}
 
 	void clean()
 	{
+		net::clean();
+
 		logging::clean();
 
 		config::clean();
