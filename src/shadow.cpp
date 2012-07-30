@@ -82,7 +82,10 @@ namespace
 int main(int argc, char *argv[])
 {
 	if (!init(argc, argv))
+	{
+		clean();
 		return 1;
+	}
 
 	clean();
 
