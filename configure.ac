@@ -43,7 +43,7 @@ AC_COPYRIGHT([Parts of the configure script is copyright (C) 2012, Joachim Pileb
 AC_CONFIG_SRCDIR([src/shadow.h])
 AC_CONFIG_HEADERS([src/host/autoconf.h])
 dnl AC_CONFIG_LIBOBJ_DIR([src/libobj])
-AC_CONFIG_FILES([Makefile src/Makefile src/host/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile src/host/Makefile src/net/Makefile])
 
 dnl ######################################################################
 dnl # Checks for programs

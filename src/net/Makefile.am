@@ -1,5 +1,5 @@
 ######################################################################
-# File: src/Makefile.am                         Part of Shadow World #
+# File: src/net/Makefile.am                     Part of Shadow World #
 #                                                                    #
 # Copyright (C) 2012, Joachim Pileborg and individual contributors.  #
 # All rights reserved.                                               #
@@ -35,43 +35,25 @@
 #                                                                    #
 ######################################################################
 
-AUTOMAKE_OPTIONS = subdir-objects
+AUTOMAKE_OPTIONS = subdir-objects foreign
 
-SUBDIRS = host net
+SUBDIRS    =
 
-LDFLAGS_BOOST = \
-	$(BOOST_SYSTEM_LDFLAGS) \
-	$(BOOST_LOG_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
-	$(BOOST_THREAD_LDFLAGS) \
-	$(BOOST_ASIO_LDFLAGS)
-
-LIBS_BOOST = \
-	$(BOOST_SYSTEM_LIBS) \
-	$(BOOST_LOG_LIBS) \
-	$(BOOST_PROGRAM_OPTIONS_LIBS) \
-	$(BOOST_THREAD_LIBS) \
-	$(BOOST_FILESYSTEM_LIBS) \
-	$(BOOST_ASIO_LIBS)
-
-AM_CPPFLAGS = $(BOOST_CPPFLAGS)
-AM_LDFLAGS  = $(LDFLAGS_BOOST)
-LIBS       += $(LIBS_BOOST)
-LIBS       += host/libhost.a net/libnet.a
+AM_CPPFLAGS = -I$(top_srcdir) -I.. $(BOOST_CPPFLAGS)
 
 ######################################################################
 
-noinst_PROGRAMS = shadow
+noinst_LIBRARIES   = libnet.a
 
-noinst_HEADERS  = shadow.h logging.h config.h
+noinst_HEADERS     = net.h
 
-shadow_SOURCES  = host/posix/main.cpp shadow.cpp logging.cpp config.cpp
-
-shadow_LDADD    = $(LIBOBJS)
-
-shadow_DEPENDENCIES = host/libhost.a net/libnet.a
+libnet_a_SOURCES  = net.cpp
 
 ######################################################################
+
+.PHONY: get-files
+get-files:
+	@echo $(SOURCES:%=host/%) $(HEADERS:%=host/%)
 
 .PHONY: count
 count:
@@ -79,28 +61,10 @@ count:
 
 .PHONY: count16k
 count16k:
-	$(top_builddir)/scripts/16k.py -c -b -l -s -q $(HEADERS) $(SOURCES) | wc
+	$(top_builddir)/scripts/16k.py -c -b -l -s $(HEADERS) $(SOURCES) | wc
 
 .PHONY: sloccount
 sloccount:
 	sloccount -- .
-
-.PHONY: sloccount-all
-sloccount-all:
-	sloccount --multiproject -- . $(SUBDIRS)
-
-.PHONY: count-all
-count-all:
-	(files=""; for d in $(SUBDIRS); do \
-	   files="$$files `$(MAKE) -s -C $$d get-files`"; \
-	 done; \
-	wc $(HEADERS) $(SOURCES) $$files | sort -g)
-
-.PHONY: count16k-all
-count16k-all:
-	(files=""; for d in $(SUBDIRS); do \
-	   files="$$files `$(MAKE) -s -C $$d get-files`"; \
-	 done; \
-	$(top_builddir)/scripts/16k.py -c -b -l -s -q $(HEADERS) $(SOURCES) $$files | wc)
 
 ######################################################################

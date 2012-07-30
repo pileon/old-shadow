@@ -14,6 +14,7 @@ src/host/stamp-h1
 src/host/posix/.dirstamp
 .deps/
 src/host/libhost.a
+src/net/libnet.a
 *.o
 src/shadow
 scripts/libtool.m4
