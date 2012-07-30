@@ -59,10 +59,13 @@ namespace
 
 bool init()
 {
-	// TODO: To not block the main thread we have to create a new thread
-	//       that will handle the ASIO event loop
-
-	io_thread_ = std::thread([]{ io_service_.run(); });
+	// To not block the main thread we have to create a new thread
+	// that will handle the ASIO event loop
+	io_thread_ = std::thread([]{
+		LOG(debug, "Startion network event loop");
+		io_service_.run();
+		LOG(debug, "Network event loop stopped");
+	});
 
 	return true;
 }
