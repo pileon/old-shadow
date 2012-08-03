@@ -38,6 +38,7 @@
 
 #include "shadow.h"
 #include "net/net.h"
+#include "host/host.h"
 
 namespace shadow {
 
@@ -62,6 +63,9 @@ namespace
 			LOG(info, "No configuration file loaded");
 
 		if (!net::init())
+			return false;
+
+		if (!host::signals::setup())
 			return false;
 
 		return true;
