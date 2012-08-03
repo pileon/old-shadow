@@ -43,8 +43,18 @@
 
 namespace shadow {
 namespace host {
+namespace signals {
 
 /* **************************************************************** */
+
+namespace handlers
+{
+	void sighup(int)
+	{
+		LOG(info, "HUP received");
+		shadow::exit();
+	}
+}
 
 namespace
 {
@@ -86,12 +96,17 @@ namespace
 
 /* **************************************************************** */
 
-bool signal_setup()
+bool setup()
 {
+	signal(SIGHUP , handlers::sighup);
+	signal(SIGINT , handlers::sighup);
+	signal(SIGTERM, handlers::sighup);
+
 	return true;
 }
 
 /* **************************************************************** */
 
+} // namespace signals
 } // namespace host
 } // namespace shadow

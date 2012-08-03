@@ -1,6 +1,6 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __HOST_HOST_H__
-#define __HOST_HOST_H__ 1
+#ifndef HOST_HOST_H_
+#define HOST_HOST_H_ 1
 /* *******************************************************************
 * File: host/host.h                             Part of Shadow World *
 *                                                                    *
@@ -43,11 +43,14 @@ namespace host {
 
 /* **************************************************************** */
 
-bool signal_setup();
+namespace signals
+{
+	bool setup();
+}
 
 /* **************************************************************** */
 
 } // namespace host
 } // namespace shadow
 
-#endif // __HOST_HOST_H__
+#endif // HOST_HOST_H_
