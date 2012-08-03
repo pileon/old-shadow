@@ -46,6 +46,8 @@ namespace shadow {
 
 namespace
 {
+	bool mainloop_exit = false;
+
 	bool init(int argc, char *argv[])
 	{
 		if (!config::init(argc, argv))
@@ -79,6 +81,15 @@ namespace
 
 		config::clean();
 	}
+
+	void mainloop()
+	{
+		while (!mainloop_exit)
+		{
+			struct timespec ts = { 0, 100000 };  // 0.1 seconds
+			nanosleep(&ts, nullptr);
+		}
+	}
 }
 
 /* **************************************************************** */
@@ -91,6 +102,8 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
+	mainloop();
+
 	clean();
 
 	return 0;
@@ -98,6 +111,7 @@ int main(int argc, char *argv[])
 
 void exit()
 {
+	mainloop_exit = true;
 }
 
 /* **************************************************************** */
