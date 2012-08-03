@@ -41,8 +41,11 @@
 
 #include <boost/asio.hpp>
 #include <thread>
+#include <memory>
+#include <functional>
 
 namespace asio = boost::asio;
+using asio::ip::tcp;
 
 namespace shadow {
 namespace net {
@@ -53,16 +56,66 @@ namespace
 {
 	asio::io_service io_service_;
 	std::thread io_thread_;
+
+	class telnet_server
+	{
+	public:
+		telnet_server()
+			: endpoint_(tcp::v4(),
+						config::get<unsigned short>("net.telnet.port")),
+			  acceptor_(io_service_, endpoint_),
+			  socket_(io_service_),
+			  accepted_(io_service_)
+			{ }
+
+		void start()
+			{
+				acceptor_.async_accept(accepted_,
+					boost::bind(&telnet_server::accept, this,
+						boost::asio::placeholders::error));
+			}
+
+	private:
+		tcp::endpoint endpoint_;
+		tcp::acceptor acceptor_;
+		tcp::socket   socket_;
+		tcp::socket   accepted_;
+
+		void accept(const boost::system::error_code &error)
+			{
+				if (!error)
+				{
+					LOG(debug, "New connection");
+					accepted_.close();
+				}
+
+				start();
+			}
+	};
+
+	std::shared_ptr<telnet_server> telnet_server_;
+
+	/* ************************************************************ */
+
+	void create_server()
+	{
+		telnet_server_.reset(new telnet_server);
+
+		telnet_server_->start();
+	}
 }
 
 /* **************************************************************** */
 
 bool init()
 {
+	// TODO: Create the listening socket(s)
+	create_server();
+
 	// To not block the main thread we have to create a new thread
 	// that will handle the ASIO event loop
 	io_thread_ = std::thread([]{
-		LOG(debug, "Startion network event loop");
+		LOG(debug, "Starting network event loop");
 		io_service_.run();
 		LOG(debug, "Network event loop stopped");
 	});
@@ -72,6 +125,7 @@ bool init()
 
 void clean()
 {
+	LOG(debug, "net::clean");
 	io_service_.stop();
 	io_thread_.join();
 }
