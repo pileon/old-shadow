@@ -64,30 +64,45 @@ namespace
 			: endpoint_(tcp::v4(),
 						config::get<unsigned short>("net.telnet.port")),
 			  acceptor_(io_service_, endpoint_),
-			  socket_(io_service_),
-			  accepted_(io_service_)
+			  socket_(io_service_)
 			{ }
 
 		void start()
 			{
-				acceptor_.async_accept(accepted_,
+				auto sock = new tcp::socket(io_service_);
+
+				// TODO: Why cant async_accept handle std::bind instead?
+				acceptor_.async_accept(*sock,
 					boost::bind(&telnet_server::accept, this,
-						boost::asio::placeholders::error));
+						sock, boost::asio::placeholders::error));
+				// acceptor_.async_accept(*sock,
+				// 	std::bind(&telnet_server::accept, this,
+				// 		sock, boost::asio::placeholders::error));
 			}
 
 	private:
 		tcp::endpoint endpoint_;
 		tcp::acceptor acceptor_;
 		tcp::socket   socket_;
-		tcp::socket   accepted_;
 
-		void accept(const boost::system::error_code &error)
+		void accept(tcp::socket *sock, const boost::system::error_code &error)
 			{
 				if (!error)
 				{
 					LOG(debug, "New connection");
-					accepted_.close();
+
+					if (sock != nullptr)
+					{
+						LOG(debug, "    from " << sock->remote_endpoint());
+						boost::asio::write(*sock,
+							boost::asio::buffer("Hello world!\r\n", 14));
+					}
+					else
+						LOG(debug, "    from unknown host");
 				}
+
+				if (sock != nullptr)
+					delete sock;
 
 				start();
 			}
