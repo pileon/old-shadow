@@ -53,6 +53,14 @@ using boost::asio::ip::tcp;
 class TCP : public Server
 {
 public:
+	// Must use the overloaded constructor
+	TCP() = delete;
+
+	// Disable copying, movement and assignment
+	TCP(const TCP &) = delete;
+	TCP(const TCP &&) = delete;
+	TCP &operator=(const TCP &) = delete;
+
 	TCP(boost::asio::io_service &service, const unsigned short port)
 		: Server(service),
 		  local_(tcp::v4(), port),
