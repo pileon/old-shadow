@@ -53,7 +53,7 @@ libnet_a_SOURCES = net.cpp
 
 .PHONY: get-files
 get-files:
-	@echo $(SOURCES:%=host/%) $(HEADERS:%=host/%)
+	@echo $(SOURCES:%=net/%) $(HEADERS:%=net/%)
 
 .PHONY: count
 count:

@@ -132,7 +132,10 @@ bool init()
 	// TODO: Create the listening socket(s)
 	create_server();
 
-	server_list_.push_back(server_ptr_t{new server::TCP{io_service_}});
+	server_list_.push_back(
+		server_ptr_t{
+			new server::TCP{io_service_,
+			config::get<unsigned short>("net.telnet.port")}});
 
 	// To not block the main thread we have to create a new thread
 	// that will handle the ASIO event loop
