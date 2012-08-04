@@ -21,7 +21,7 @@
 			"file_exclude_patterns": [
 				"Makefile", "Makefile.in",
 				"src/host/autoconf.*", "src/host/stamp-h1",
-				".dirstamp"
+				".dirstamp", "shadow"
 				]
 		}
 	]
