@@ -1,8 +1,8 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef NET_SERVER_H_
-#define NET_SERVER_H_ 1
+#ifndef NET_TCP_H_
+#define NET_TCP_H_ 1
 /* *******************************************************************
-* File: net/server.h                            Part of Shadow World *
+* File: net/tcp.h                               Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,42 +38,34 @@
 *                                                                    *
 ******************************************************************* */
 
+#include "server.h"
 #include <boost/asio.hpp>
 
 namespace shadow {
 namespace net {
+
+/* **************************************************************** */
+
 namespace server {
 
-/* **************************************************************** */
-
-class Server
+class TCP : public Server
 {
 public:
-	virtual ~Server()
+	TCP(boost::asio::io_service &service)
+		: Server(service)
+		{ }
+	virtual ~TCP()
 		{ }
 
-	virtual void start_accept() = 0;
-
-protected:
-	Server(boost::asio::io_service &service)
-		: io_service_(service)
+	virtual void start_accept()
 		{ }
-
-	boost::asio::io_service &io_service() const
-		{ return io_service_; }
-
-private:
-	// Disable copying
-	Server(const Server &);
-	Server &operator=(const Server &);
-
-	boost::asio::io_service &io_service_;
 };
+
+} // namespace server
 
 /* **************************************************************** */
 
-} // namespace server
 } // namespace net
 } // namespace shadow
 
-#endif // NET_SERVER_H_
+#endif // NET_TCP_H_

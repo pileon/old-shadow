@@ -38,6 +38,7 @@
 
 #include "shadow.h"
 #include "net.h"
+#include "tcp.h"
 
 #include <boost/asio.hpp>
 #include <thread>
