@@ -44,6 +44,7 @@
 #include <thread>
 #include <memory>
 #include <functional>
+#include <list>
 
 namespace asio = boost::asio;
 using asio::ip::tcp;
@@ -119,6 +120,9 @@ namespace
 
 		telnet_server_->start();
 	}
+
+	using server_ptr_t = std::shared_ptr<server::Server>;
+	std::list<server_ptr_t> server_list_;
 }
 
 /* **************************************************************** */
@@ -127,6 +131,8 @@ bool init()
 {
 	// TODO: Create the listening socket(s)
 	create_server();
+
+	server_list_.push_back(server_ptr_t{new server::TCP{io_service_}});
 
 	// To not block the main thread we have to create a new thread
 	// that will handle the ASIO event loop
