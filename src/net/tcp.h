@@ -48,17 +48,27 @@ namespace net {
 
 namespace server {
 
+using boost::asio::ip::tcp;
+
 class TCP : public Server
 {
 public:
-	TCP(boost::asio::io_service &service)
-		: Server(service)
+	TCP(boost::asio::io_service &service, const unsigned short port)
+		: Server(service),
+		  local_(tcp::v4(), port),
+		  socket_(service),
+		  acceptor_(service, local_)
 		{ }
 	virtual ~TCP()
 		{ }
 
 	virtual void start_accept()
 		{ }
+
+private:
+	tcp::endpoint local_;    // The local address we listen to
+	tcp::socket   socket_;   // The socket we're listening for connections on
+	tcp::acceptor acceptor_; //
 };
 
 } // namespace server
