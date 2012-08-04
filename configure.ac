@@ -294,8 +294,8 @@ AC_ARG_WITH(trace,
    fi])
 
 AH_TOP([/* -*- mode: c++; coding: utf-8 -*- */
-#ifndef __HOST_AUTOCONF_H__
-#define __HOST_AUTOCONF_H__ 1
+#ifndef HOST_AUTOCONF_H_
+#define HOST_AUTOCONF_H_ 1
 /* *******************************************************************
 * File: host/autoconf.h                         Part of Shadow World *
 *                                                                    *
@@ -309,7 +309,7 @@ AH_TOP([/* -*- mode: c++; coding: utf-8 -*- */
 
 AH_BOTTOM([
 /* **************************************************************** */
-#endif /* __HOST_AUTOCONF_H__ */
+#endif // HOST_AUTOCONF_H_
 ])
 
 dnl For use in makefiles, since automake can't handle it properly

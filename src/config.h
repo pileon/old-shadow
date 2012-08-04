@@ -1,6 +1,6 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __CONFIG_H__
-#define __CONFIG_H__ 1
+#ifndef CONFIG_H_
+#define CONFIG_H_ 1
 /* *******************************************************************
 * File: config.h                                Part of Shadow World *
 *                                                                    *
@@ -78,4 +78,4 @@ inline bool exists(const std::string &name)
 } // namespace config
 } // namespace shadow
 
-#endif // __CONFIG_H__
+#endif // CONFIG_H_

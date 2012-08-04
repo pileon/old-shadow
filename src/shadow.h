@@ -1,6 +1,6 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __SHADOW_H__
-#define __SHADOW_H__ 1
+#ifndef SHADOW_H_
+#define SHADOW_H_ 1
 /* *******************************************************************
 * File: shadow.h                                Part of Shadow World *
 *                                                                    *
@@ -59,4 +59,4 @@ void exit();
 
 } // namespace shadow
 
-#endif // __SHADOW_H__
+#endif // SHADOW_H_

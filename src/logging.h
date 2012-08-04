@@ -1,6 +1,6 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef __LOGGING_H__
-#define __LOGGING_H__ 1
+#ifndef LOGGING_H_
+#define LOGGING_H_ 1
 /* *******************************************************************
 * File: logging.h                               Part of Shadow World *
 *                                                                    *
@@ -55,4 +55,4 @@ void clean();
 } // namespace logging
 } // namespace shadow
 
-#endif // __LOGGING_H__
+#endif // LOGGING_H_
