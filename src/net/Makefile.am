@@ -43,11 +43,11 @@ AM_CPPFLAGS = -I$(top_srcdir) -I.. $(BOOST_CPPFLAGS)
 
 ######################################################################
 
-noinst_LIBRARIES   = libnet.a
+noinst_LIBRARIES = libnet.a
 
-noinst_HEADERS     = net.h
+noinst_HEADERS   = net.h server.h
 
-libnet_a_SOURCES  = net.cpp
+libnet_a_SOURCES = net.cpp
 
 ######################################################################
 
