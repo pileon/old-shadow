@@ -52,11 +52,23 @@ dnl # First check which GCC version is wanted
 AC_ARG_WITH(gcc,
   [  --with-gcc=<version>    Use GCC (gcc and g++) of the specified version],
   [if test "$withval" != yes; then
-     AC_PROG_CXX([g++-$withval g++ c++q])
-   else
-     AC_PROG_CXX
-   fi],
-  [AC_PROG_CXX])
+     AC_PROG_CXX([g++-$withval g++ c++])
+     AC_PROG_CC([gcc-$withval gcc])
+   elif test "$withval" = yes; then
+     AC_PROG_CXX([g++ c++])
+     AC_PROG_CC([gcc])
+   fi])
+
+AC_ARG_WITH(clang,
+  [  --with-clang            Use Clang (clang and clang++) as the compiler],
+  [if test "$withval" = yes; then
+     AC_PROG_CXX([clang++])
+     AC_PROG_CC([clang])
+   fi])
+
+dnl TODO: Check that CXX or CC is not set before doing the check
+AC_PROG_CXX
+AC_PROG_CC
 
 AC_PROG_CXX_C_O
 AC_PROG_CXXCPP
@@ -104,7 +116,8 @@ AC_C_BACKSLASH_E
 AC_ARG_ENABLE([gdb3],
   [  --enable-gdb3           enable higher debug level option to the compiler],
   [if test $enableval = yes; then
-     AC_CHECK_CXX_ARGUMENT(-ggdb3, [cxx_have_ggdb3=yes], [cxx_have_ggdb3=no])
+     AC_CHECK_CXX_ARGUMENT(-ggdb3, [cxx_have_ggdb3=yes], 
+      [AC_CHECK_CXX_ARGUMENT(-g3,  [cxx_have_ggdb3=yes], [cxx_have_ggdb3=no])])
    fi])
 if test $cxx_have_ggdb3 = yes; then
   CXXFLAGS=`echo $CXXFLAGS | sed 's/\-g//'`
@@ -123,6 +136,8 @@ AC_ARG_ENABLE([warnings],
      AC_CHECK_CXX_ARGUMENT(-Wconversion)
      AC_CHECK_CXX_ARGUMENT(-Wsign-conversion)
      AC_CHECK_CXX_ARGUMENT(-Woverloaded-virtual)
+     AC_CHECK_CXX_ARGUMENT(-Weverything)
+     AC_CHECK_CXX_ARGUMENT(-pedantic)
    fi])
 
 AC_ARG_ENABLE([opt],
