@@ -38,7 +38,7 @@
 
 #include "shadow.h"
 #include "net.h"
-#include "tcp.h"
+#include "telnet.h"
 
 #include <boost/asio.hpp>
 #include <thread>
@@ -123,6 +123,12 @@ namespace
 
 	using server_ptr_t = std::shared_ptr<server::Server>;
 	std::list<server_ptr_t> server_list_;
+
+	template<class S>
+	void add_server(const unsigned short port)
+	{
+		server_list_.push_back(std::make_shared<S>(io_service_, port));
+	}
 }
 
 /* **************************************************************** */
@@ -130,15 +136,12 @@ namespace
 bool init()
 {
 	// TODO: Create the listening socket(s)
-	create_server();
+	// create_server();
 
-	if (config::exists("net.telnet.enabled") &&
-		config::get<bool>("net.telnet.enabled"))
+	if (config::get<bool>("net.telnet.enabled"))
 	{
-		server_list_.push_back(
-			server_ptr_t{
-				new server::TCP{io_service_,
-				config::get<unsigned short>("net.telnet.port")}});
+		add_server<server::Telnet>(
+			config::get<unsigned short>("net.telnet.port"));
 	}
 
 	// To not block the main thread we have to create a new thread
@@ -154,7 +157,6 @@ bool init()
 
 void clean()
 {
-	LOG(debug, "net::clean");
 	io_service_.stop();
 	io_thread_.join();
 }

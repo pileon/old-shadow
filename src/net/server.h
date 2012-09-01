@@ -46,9 +46,20 @@ namespace server {
 
 /* **************************************************************** */
 
+// TODO: New concept: Have the server class generic (i.e. templated)
+//       with the template being a "protocol implementation", that handles
+//       all the protocol specific bit. This `Server` class handles the
+//       the actual accepting of connections and not much more.
+// TODO: Also try to make the protocol bits more abstract, especially
+//       try to hide the Boost stuff behgind our own classes and aliases.
 class Server
 {
 public:
+	// Disable copying
+	Server(const Server &) = delete;
+	Server(const Server &&) = delete;
+	Server &operator=(const Server &) = delete;
+
 	virtual ~Server()
 		{ }
 
@@ -63,10 +74,6 @@ protected:
 		{ return io_service_; }
 
 private:
-	// Disable copying
-	Server(const Server &);
-	Server &operator=(const Server &);
-
 	boost::asio::io_service &io_service_;
 };
 

@@ -44,11 +44,11 @@
 namespace shadow {
 namespace net {
 
+using boost::asio::ip::tcp;
+
 /* **************************************************************** */
 
 namespace server {
-
-using boost::asio::ip::tcp;
 
 class TCP : public Server
 {
@@ -67,6 +67,16 @@ public:
 		  socket_(service),
 		  acceptor_(service, local_)
 		{ }
+
+	TCP(boost::asio::io_service &service,
+		const boost::asio::ip::address &address,
+		const unsigned short port)
+		: Server(service),
+		  local_(address, port),
+		  socket_(service),
+		  acceptor_(service, local_)
+		{ }
+
 	virtual ~TCP()
 		{ }
 
