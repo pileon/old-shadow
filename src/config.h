@@ -57,22 +57,25 @@ namespace config_private
 
 /* **************************************************************** */
 
+inline bool exists(const std::string &name)
+{
+	return (config_private::properties.find(name) !=
+			config_private::properties.not_found());
+}
+
 template<typename T>
 inline T get(const std::string &name)
 {
-	return config_private::properties.get<T>(name);
+	if (exists(name))
+		return config_private::properties.get<T>(name);
+	else
+		return T();
 }
 
 template<typename T>
 inline void set(const std::string &name, const T &value)
 {
 	config_private::properties.put(name, value);
-}
-
-inline bool exists(const std::string &name)
-{
-	return (config_private::properties.find(name) !=
-			config_private::properties.not_found());
 }
 
 } // namespace config
