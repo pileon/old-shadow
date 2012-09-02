@@ -38,6 +38,8 @@
 *                                                                    *
 ******************************************************************* */
 
+#include <boost/asio.hpp>
+
 namespace shadow {
 namespace net {
 
@@ -45,6 +47,8 @@ namespace net {
 
 bool init();
 void clean();
+
+boost::asio::io_service& get_io_service();
 
 /* **************************************************************** */
 

@@ -161,6 +161,11 @@ void clean()
 	io_thread_.join();
 }
 
+asio::io_service& get_io_service()
+{
+	return io_service_;
+}
+
 /* **************************************************************** */
 
 } // namespace net
