@@ -77,6 +77,15 @@
  * one port and a list of connections. Protocols are used by the connections
  * only, and are passed as template parameters to the connections.
  *
+ * Internet Protocol
+ * -----------------
+ * There is actually a fifth concept, that of Internet Protocol. The Internet
+ * Protocol is the "raw" protocol used by the ports and connections, and in
+ * reality all heave lifting (receiving, accepting connections and sedning)
+ * is done through the internet protocol classes. There will be two internet
+ * protocols to start with: TCPv4 to handle IPv4 TCP connections; And TCPv6
+ * to handle IPv6 connections. UDP will not be supported initially, but may
+ * be supported later if the need arises.
  *
  */
 
