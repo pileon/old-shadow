@@ -1,8 +1,8 @@
 // -*- mode: C++; coding: utf-8 -*-
-#ifndef NET_NET_H_
-#define NET_NET_H_ 1
+#ifndef NET_PRIVATE_H_
+#define NET_PRIVATE_H_ 1
 /* *******************************************************************
-* File: net/net.h                               Part of Shadow World *
+* File: net/private.h                           Part of Shadow World *
 *                                                                    *
 * Copyright (C) 2012, Joachim Pileborg and individual contributors.  *
 * All rights reserved.                                               *
@@ -38,17 +38,18 @@
 *                                                                    *
 ******************************************************************* */
 
+#include <boost/asio.hpp>
+
 namespace shadow {
 namespace net {
 
 /* **************************************************************** */
 
-bool init();
-void clean();
+boost::asio::io_service& get_io_service();
 
 /* **************************************************************** */
 
 } // namespace net
 } // namespace shadow
 
-#endif // NET_NET_H_
+#endif // NET_PORT_H_
