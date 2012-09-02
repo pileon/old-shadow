@@ -45,7 +45,7 @@ AM_CPPFLAGS = -I$(top_srcdir) -I.. $(BOOST_CPPFLAGS)
 
 noinst_LIBRARIES = libnet.a
 
-noinst_HEADERS   = net.h server.h tcp.h telnet.h
+noinst_HEADERS   = net.h server.h port.h tcp.h telnet.h
 
 libnet_a_SOURCES = net.cpp
 
