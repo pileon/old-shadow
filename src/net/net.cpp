@@ -36,6 +36,50 @@
 *                                                                    *
 ******************************************************************* */
 
+/*
+ * New design for the network code
+ * ===============================
+ *
+ * The goal is to make the network engine more abstract, but also more
+ * modular, extensible and portable.
+ *
+ * The last point might involve making simple and thin wrappers around
+ * the Boost ASIO classes in preparation of future inclusion of network
+ * functionality into the C++ standard. However that will probably be many
+ * years into the future so it might be a lot more work than needed.
+ *
+ * Basic concepts
+ * --------------
+ * There are four basic concepts in the network layer: Servers, Ports,
+ * Protocols and Connections. Servers are the things that hold all things
+ * together. A server has a Port, a Protocol and zero or more connections.
+ *
+ * Ports
+ * -----
+ * A port is a generic class that handles the actual Internet connections.
+ * When a user connects to the server it happens through a port.
+ *
+ * Connections
+ * -----------
+ * A connection is an actual client connection. These are created by the
+ * ports when a new connection is made, and passed on to the server for
+ * handling. The implementation of this concept is what does the actual
+ * receiving and sending of data.
+ *
+ * Protocols
+ * ---------
+ * Protocols are what handles the input being received from a connection,
+ * and passes output from the game to the connection to be sent.
+ *
+ * Servers
+ * -------
+ * Servers are what brings all the above concepts together. A server have
+ * one port and a list of connections. Protocols are used by the connections
+ * only, and are passed as template parameters to the connections.
+ *
+ *
+ */
+
 #include "shadow.h"
 #include "net.h"
 #include "telnet.h"
@@ -45,6 +89,8 @@
 #include <memory>
 #include <functional>
 #include <list>
+
+#include "port.h"
 
 namespace asio = boost::asio;
 using asio::ip::tcp;

@@ -52,4 +52,4 @@ boost::asio::io_service& get_io_service();
 } // namespace net
 } // namespace shadow
 
-#endif // NET_PORT_H_
+#endif // NET_PRIVATE_H_

@@ -42,6 +42,21 @@
 
 namespace shadow {
 namespace net {
+
+/* **************************************************************** */
+
+template<class ProtoT>
+class server
+{
+public:
+	typedef ProtoT protocol_type;
+
+private:
+	protocol_type protocol_;
+};
+
+/* **************************************************************** */
+
 namespace server {
 
 /* **************************************************************** */

@@ -38,16 +38,43 @@
 *                                                                    *
 ******************************************************************* */
 
-#include <boost/asio.hpp>
-
 namespace shadow {
 namespace net {
 
 /* **************************************************************** */
 
-template<class Proto>
+template<class ProtoT>
 class basic_port
 {
+public:
+	typedef ProtoT protocol_type;
+
+	basic_port() = delete;
+	basic_port(const basic_port<ProtoT>&) = delete;
+	basic_port(const basic_port<ProtoT>&&) = delete;
+	basic_port<ProtoT>& operator=(const basic_port<ProtoT>&) = delete;
+
+	basic_port(const unsigned short port)
+		{
+			bind(port);
+		}
+
+	template<class AddressT>
+	basic_port(const AddressT& address, const unsigned short port)
+		{
+			bind(address, port);
+		}
+
+	void bind(const unsigned short port)
+		{
+			protocol_type::bind(port);
+		}
+
+	template<class AddressT>
+	void bind(const AddressT& address, const unsigned short port)
+		{
+			protocol_type::bind(address, port);
+		}
 };
 
 /* **************************************************************** */

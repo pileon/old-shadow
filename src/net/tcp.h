@@ -48,6 +48,21 @@ using boost::asio::ip::tcp;
 
 /* **************************************************************** */
 
+namespace protocol {
+
+class TCP
+{
+public:
+
+
+
+	static void bind() {}
+};
+
+} // namespace protocol
+
+/* **************************************************************** */
+
 namespace server {
 
 class TCP : public Server
