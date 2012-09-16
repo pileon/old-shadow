@@ -4,6 +4,90 @@
 		"selected_items":
 		[
 			[
+				"pro",
+				"protocol_type"
+			],
+			[
+				"acc",
+				"acceptor_"
+			],
+			[
+				"serv",
+				"server_list_"
+			],
+			[
+				"io",
+				"io_service_"
+			],
+			[
+				"io_",
+				"io_service"
+			],
+			[
+				"en",
+				"endpoint_"
+			],
+			[
+				"te",
+				"telnet_server"
+			],
+			[
+				"tel",
+				"telnet_server_"
+			],
+			[
+				"telnet",
+				"telnet_server"
+			],
+			[
+				"cre",
+				"create_server"
+			],
+			[
+				"main",
+				"mainloop_exit"
+			],
+			[
+				"o",
+				"options"
+			],
+			[
+				"add",
+				"add_arguments"
+			],
+			[
+				"set_",
+				"set_argument_options"
+			],
+			[
+				"co",
+				"count"
+			],
+			[
+				"pr",
+				"program_options"
+			],
+			[
+				"a",
+				"arguments"
+			],
+			[
+				"defau",
+				"defaults"
+			],
+			[
+				"d",
+				"dnl"
+			],
+			[
+				"AC_M",
+				"AC_MSG_RESULT"
+			],
+			[
+				"enable",
+				"enable-warnings"
+			],
+			[
 				"name",
 				"namespace"
 			],
@@ -14,10 +98,6 @@
 			[
 				"fi",
 				"filename"
-			],
-			[
-				"pro",
-				"property_value"
 			],
 			[
 				"syst",
@@ -39,16 +119,100 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/shadow.cpp",
+			"settings":
+			{
+				"buffer_size": 3771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/net/net.cpp",
+			"settings":
+			{
+				"buffer_size": 7653,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/config.cpp",
+			"settings":
+			{
+				"buffer_size": 5964,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/net/server.h",
+			"settings":
+			{
+				"buffer_size": 4091,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/net/port.h",
+			"settings":
+			{
+				"buffer_size": 3556,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/net/tcp.h",
+			"settings":
+			{
+				"buffer_size": 4031,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/config.h",
+			"settings":
+			{
+				"buffer_size": 3555,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/Makefile/Make.sublime-build",
 	"command_palette":
 	{
-		"height": 284.0,
+		"height": 285.0,
 		"selected_items":
 		[
 			[
 				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: r",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: i",
 				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Snippet: he",
+				"Snippet: C++ source-file header"
+			],
+			[
+				"Snippet: ",
+				"Snippet: C++ source-file header"
+			],
+			[
+				"Snippet: H",
+				"Snippet: C++ header-file header"
+			],
+			[
+				"Snippet: c",
+				"Snippet: C++ source-file header"
 			],
 			[
 				"c++",
@@ -57,10 +221,6 @@
 			[
 				"conso",
 				"Set Syntax: R Console"
-			],
-			[
-				"Snippet: ",
-				"Snippet: C++ source file header"
 			],
 			[
 				"Snippet: C",
@@ -84,6 +244,40 @@
 	},
 	"file_history":
 	[
+		"/home/arrow/Projects/MUD/shadow/src/net/telnet.h",
+		"/home/arrow/Projects/MUD/shadow/src/net/private.h",
+		"/home/arrow/Projects/MUD/shadow/src/net/net.h",
+		"/home/arrow/Projects/MUD/shadow/src/net/Makefile.am",
+		"/home/arrow/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/arrow/Projects/MUD/shadow/README",
+		"/home/arrow/.config/sublime-text-2/Packages/User/SublimeClang.sublime-settings",
+		"/usr/include/c++/4.7/chrono",
+		"/home/arrow/.config/sublime-text-2/Packages/SublimeClang/SublimeClang.sublime-settings",
+		"/home/arrow/Projects/MUD/shadow/src/config.h",
+		"/home/arrow/Projects/MUD/shadow/autogen.sh",
+		"/home/arrow/Projects/MUD/shadow/configure.ac",
+		"/home/arrow/Projects/MUD/shadow/src/host/sysdeps.h",
+		"/home/arrow/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/arrow/.config/sublime-text-2/Packages/User/Package Control.sublime-settings",
+		"/home/arrow/Projects/MUD/Makefile",
+		"/home/arrow/Projects/MUD/shadow/src/Makefile.am",
+		"/home/arrow/Projects/MUD/ptmud/README.md",
+		"/home/arrow/Projects/MUD/shadow/src/logging.h",
+		"/home/arrow/Projects/MUD/shadow/src/shadow.h",
+		"/home/arrow/Projects/MUD/shadow/shadow.sublime-project",
+		"/home/arrow/Projects/MUD/shadow/src/config.cpp",
+		"/home/arrow/Projects/MUD/shadow/src/host/posix/signal.cpp",
+		"/home/arrow/Projects/MUD/shadow/src/host/host.h",
+		"/home/arrow/Projects/MUD/shadow/src/host/Makefile.am",
+		"/home/arrow/Projects/MUD/shadow/src/host/posix/main.cpp",
+		"/home/arrow/Projects/MUD/shadow/.gitignore",
+		"/home/arrow/Projects/MUD/shadow/Makefile.am",
+		"/home/arrow/Projects/MUD/shadow/src/shadow.cpp",
+		"/home/arrow/.config/sublime-text-2/Packages/User/Default (Linux).sublime-keymap",
+		"/home/arrow/Projects/MUD/shadow/src/logging.cpp",
+		"/home/arrow/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/arrow/Projects/MUD/shadow/acinclude.m4",
+		"/home/arrow/Projects/MUD/shadow/src/main.cpp",
 		"/home/arrow/Develop/MUD/TM/src/config.h",
 		"/home/arrow/Develop/MUD/TM/src/logger.h",
 		"/home/arrow/Develop/MUD/TM/src/net/address.h",
@@ -95,7 +289,6 @@
 		"/home/arrow/Develop/MUD/TM/src/main.cpp",
 		"/home/arrow/Develop/MUD/TM/src/net/address.cpp",
 		"/home/arrow/Develop/MUD/TM/src/Makefile",
-		"/home/arrow/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
 		"/home/arrow/.config/sublime-text-2/Packages/Package Control/Package Control.sublime-settings",
 		"/home/arrow/Develop/MUD/raven/src/Makefile.am",
 		"/home/arrow/Develop/MUD/raven/configure.ac",
@@ -178,40 +371,7 @@
 		"/home/arrow/Develop/MUD/old/shadow-99/src/player.h",
 		"/home/arrow/Develop/MUD/old/shadow-99/src/socket.cc",
 		"/home/arrow/Develop/MUD/old/shadow-99/src/socket.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/telnet.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/server.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/signal.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/loader.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/area.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/zone.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/config.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/dmalloc.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/utils.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/server.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/telnet.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/user.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/character.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/Makefile",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/Makefile.orig",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/addrinfo.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/freeaddrinfo.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_clone.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_nsearch.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_port.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_serv.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/ga_unix.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gai_hdr.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gai_hdr.lh",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/getaddrinfo.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/gn_ipv46.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/test1.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/testga.c",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/gai/unp.h",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/shadow.cfg",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/wizard.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/monster.cc",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/olle",
-		"/home/arrow/Develop/MUD/old/shadow-99/src/heartbeat.cc"
+		"/home/arrow/Develop/MUD/old/shadow-99/src/telnet.cc"
 	],
 	"find":
 	{
@@ -229,6 +389,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"^#",
+			"*",
 			"#",
 			" >",
 			"Closing connection",
@@ -251,9 +413,11 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"dnl #",
+			"#",
 			"{ -1, NULL, { 0 }, { 0 } }",
 			", NULL, { 0 }, { 0 } },  /* SKILL_"
 		],
@@ -266,19 +430,209 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/shadow.cpp",
+					"settings":
+					{
+						"buffer_size": 3771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3111,
+								3111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/net/net.cpp",
+					"settings":
+					{
+						"buffer_size": 7653,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5896,
+								5896
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1940.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/config.cpp",
+					"settings":
+					{
+						"buffer_size": 5964,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3135,
+								3135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 3,
+					"file": "src/net/server.h",
+					"settings":
+					{
+						"buffer_size": 4091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2517,
+								2517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 359.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/net/port.h",
+					"settings":
+					{
+						"buffer_size": 3556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3368,
+								3368
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/net/tcp.h",
+					"settings":
+					{
+						"buffer_size": 4031,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2885,
+								2885
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/config.h",
+					"settings":
+					{
+						"buffer_size": 3555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3345,
+								3345
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 459.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 34.0
 	},
 	"input":
 	{
@@ -314,6 +668,14 @@
 		]
 	},
 	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 112.0
+	},
+	"output.clang_static_analyzer":
+	{
+		"height": 0.0
+	},
 	"replace":
 	{
 		"height": 64.0

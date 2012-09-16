@@ -66,10 +66,10 @@ inline bool exists(const std::string &name)
 template<typename T>
 inline T get(const std::string &name)
 {
-	if (exists(name))
+	// if (exists(name))
 		return config_private::properties.get<T>(name);
-	else
-		return T();
+	// else
+	// 	return T();
 }
 
 template<typename T>

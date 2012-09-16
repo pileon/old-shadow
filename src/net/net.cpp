@@ -126,15 +126,18 @@ namespace
 
 		void start()
 			{
+				LOG(debug, "Accepting connections on port "
+					<< config::get<unsigned short>("net.telnet.port"));
+
 				auto sock = new tcp::socket(io_service_);
 
 				// TODO: Why cant async_accept handle std::bind instead?
-				acceptor_.async_accept(*sock,
-					boost::bind(&telnet_server::accept, this,
-						sock, boost::asio::placeholders::error));
 				// acceptor_.async_accept(*sock,
-				// 	std::bind(&telnet_server::accept, this,
+				// 	boost::bind(&telnet_server::accept, this,
 				// 		sock, boost::asio::placeholders::error));
+				acceptor_.async_accept(*sock,
+					std::bind(&telnet_server::accept, this,
+						sock, std::placeholders::_1));
 			}
 
 	private:
@@ -157,6 +160,8 @@ namespace
 					else
 						LOG(debug, "    from unknown host");
 				}
+				else
+					LOG(debug, "Error!");
 
 				if (sock != nullptr)
 					delete sock;
@@ -191,13 +196,13 @@ namespace
 bool init()
 {
 	// TODO: Create the listening socket(s)
-	// create_server();
+	create_server();
 
-	if (config::get<bool>("net.telnet.enabled"))
-	{
-		add_server<server::Telnet>(
-			config::get<unsigned short>("net.telnet.port"));
-	}
+	// if (config::get<bool>("net.telnet.enabled"))
+	// {
+	// 	add_server<server::Telnet>(
+	// 		config::get<unsigned short>("net.telnet.port"));
+	// }
 
 	// To not block the main thread we have to create a new thread
 	// that will handle the ASIO event loop

@@ -45,15 +45,15 @@ namespace net {
 
 /* **************************************************************** */
 
-template<class ProtoT>
-class server
-{
-public:
-	typedef ProtoT protocol_type;
+// template<class ProtoT>
+// class server
+// {
+// public:
+// 	typedef ProtoT protocol_type;
 
-private:
-	protocol_type protocol_;
-};
+// private:
+// 	protocol_type protocol_;
+// };
 
 /* **************************************************************** */
 
